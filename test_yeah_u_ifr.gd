@@ -5,6 +5,7 @@ extends Control
 func _ready():
 	print("2o2")
 	print("test from phone")
+	print("hello from the compter land!")
 	pass # Replace with function body.
 
 
