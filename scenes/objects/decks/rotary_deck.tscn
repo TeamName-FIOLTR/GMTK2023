@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3gy6dr0n08dl"]
+
+[ext_resource type="Script" path="res://scenes/objects/decks/rotary_deck.gd" id="1_lgwug"]
+[ext_resource type="Texture2D" uid="uid://bfawlyyby61dm" path="res://assets/textures/debug_texture.png" id="2_i45m6"]
+
+[sub_resource type="Curve2D" id="Curve2D_dvpjw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -500, 300, -300, 0, 300, 0, 0, 0, 0, 0, 0, 0, 500, 300)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcoet"]
+size = Vector2(1054, 652)
+
+[node name="Rotary Deck" type="Node2D"]
+script = ExtResource("1_lgwug")
+rotary_width = 500.0
+rotary_height = 300.0
+center_handle = Vector2(-300, 0)
+scroll = null
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_dvpjw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-66.2852, 4.88501)
+rotation = -0.14643
+progress = 538.238
+
+[node name="DebugTexture" type="Sprite2D" parent="Path2D/PathFollow2D"]
+scale = Vector2(0.165, 0.165)
+texture = ExtResource("2_i45m6")
+
+[node name="Click Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Click Area"]
+shape = SubResource("RectangleShape2D_vcoet")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="input_event" from="Click Area" to="." method="_on_click_area_input_event"]
