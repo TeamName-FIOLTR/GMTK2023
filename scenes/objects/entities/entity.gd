@@ -47,13 +47,11 @@ func make_intent()->void:
 #we can use this function to run extra code
 #per each selected intent
 func on_intent_set(intent):
-	print(self.name + " set intent to " + str(self.intent))
+	pass
 
 func on_focus_enter()->void:
-	print("focus enter " + self.name)
 	modulate = Color(0,0,0)
 func on_focus_exit()->void:
-	print("focus exit " + self.name)
 	self.modulate = Color(1,1,1)
 func on_mouse_entered():
 	var p = get_parent()

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://de6o1od0e4qm"]
+
+[ext_resource type="Script" path="res://scenes/objects/HeartDisplay/heart_display.gd" id="1_vxxmi"]
+
+[node name="HeartDisplay" type="Node2D"]
+script = ExtResource("1_vxxmi")
+heart_spacing = 500.0
+
+[node name="transform" type="Node2D" parent="."]
+scale = Vector2(0.01, 0.01)

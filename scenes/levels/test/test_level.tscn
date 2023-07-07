@@ -5,22 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://db2yfx8gb7k7e" path="res://scenes/objects/entityContainer/entity_container.tscn" id="2_cnlcd"]
 
 [node name="test level" type="Node2D"]
+position = Vector2(0, -2)
 script = ExtResource("1_opsnk")
 
 [node name="EntityContainer" parent="." instance=ExtResource("2_cnlcd")]
 
 [node name="Entity" parent="EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(812, 260)
+position = Vector2(812, 259)
 scale = Vector2(7.56, 7.56)
 
 [node name="Entity2" parent="EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(201, 257)
-scale = Vector2(6.7497, 6.7497)
-
-[node name="Entity3" parent="EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(194, 543)
-scale = Vector2(6.7497, 6.7497)
-
-[node name="Entity4" parent="EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(802, 553)
+position = Vector2(186, 255)
 scale = Vector2(6.7497, 6.7497)

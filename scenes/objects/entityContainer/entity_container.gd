@@ -21,7 +21,6 @@ func sigmoid(x : float)->float:
 
 func _input(event)->void:
 	var dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-	print(dir)
 	if dir:
 		var target_position : Vector2 = Vector2(0,0)
 		if selected_entity:

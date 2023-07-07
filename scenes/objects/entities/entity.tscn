@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c51cc5g63vh0p"]
+[gd_scene load_steps=6 format=3 uid="uid://c51cc5g63vh0p"]
 
 [ext_resource type="Script" path="res://scenes/objects/entities/entity.gd" id="1_60q11"]
 [ext_resource type="Texture2D" uid="uid://ddi7ws1vlps2x" path="res://icon.svg" id="3_x48e4"]
 [ext_resource type="PackedScene" uid="uid://se674wobxwxs" path="res://scenes/objects/IntentIndecator/intent_indecator.tscn" id="4_2pu1x"]
+[ext_resource type="PackedScene" uid="uid://de6o1od0e4qm" path="res://scenes/objects/HeartDisplay/heart_display.tscn" id="4_t3mc8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imrec"]
 
@@ -24,3 +25,6 @@ shape = SubResource("RectangleShape2D_imrec")
 [node name="IntentIndecator" parent="." instance=ExtResource("4_2pu1x")]
 position = Vector2(-1, -21)
 scale = Vector2(0.12, 0.12)
+
+[node name="HeartDisplay" parent="." instance=ExtResource("4_t3mc8")]
+position = Vector2(0, 15)
