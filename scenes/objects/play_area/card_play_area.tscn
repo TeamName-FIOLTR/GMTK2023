@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://pvhbdngj4t7n"]
+
+[ext_resource type="Script" path="res://scenes/objects/play_area/CardDetectingArea.gd" id="1_5hois"]
+[ext_resource type="Script" path="res://scenes/objects/play_area/card_play_area.gd" id="1_igqvt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x5qk"]
+size = Vector2(127, 114)
+
+[node name="Card Play Area" type="Node2D"]
+script = ExtResource("1_igqvt")
+
+[node name="CardDetectingArea" type="Area2D" parent="."]
+script = ExtResource("1_5hois")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDetectingArea"]
+shape = SubResource("RectangleShape2D_2x5qk")
+
+[connection signal="area_entered" from="CardDetectingArea" to="CardDetectingArea" method="_on_area_entered"]
+[connection signal="area_exited" from="CardDetectingArea" to="CardDetectingArea" method="_on_area_exited"]
