@@ -24,7 +24,3 @@ scale = Vector2(6.7497, 6.7497)
 [node name="Entity4" parent="EntityContainer" instance=ExtResource("2_4uyk5")]
 position = Vector2(802, 553)
 scale = Vector2(6.7497, 6.7497)
-
-[node name="Entity5" parent="EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(635, 373)
-scale = Vector2(6.7497, 6.7497)
