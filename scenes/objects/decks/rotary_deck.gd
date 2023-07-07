@@ -36,6 +36,8 @@ class_name RotaryDeck
 
 @export var scroll : float = 0
 
+@export var card_scale : float = 1.0
+
 var card_offsets : Array[float]
 
 # Called when the node enters the scene tree for the first time.
@@ -76,15 +78,16 @@ func update_cards_on_rotary():
 		var follower = PathFollow2D.new()
 		follower.add_child(card)
 		rotary_path.add_child(follower)
+		follower.scale = Vector2.ONE*card_scale
 		
 		card_offsets[i] = i/float(card_count)
 		i += 1
-		
+	update_scroll()
 
 func update_scroll():
 	var following_points = rotary_path.get_children()
 	for i in range(len(card_deck.cards)):
-		following_points[i].progress_ratio = clamp(card_offsets[i]+scroll,0,1)
+		following_points[i].progress_ratio = clamp(card_offsets[i]+scroll,0.001,0.999)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -95,6 +98,7 @@ func _process(delta):
 func _on_click_area_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 #		print("/")
-		scroll += clamp(event.relative.x/1000.0,-0.5,1.5)
-		update_scroll()
+		if abs(event.relative.x)>abs(event.relative.y):
+			scroll += clamp(event.relative.x/1000.0,-0.5,1.5)
+			update_scroll()
 	pass # Replace with function body.
