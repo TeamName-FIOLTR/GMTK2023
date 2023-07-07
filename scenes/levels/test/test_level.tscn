@@ -1,18 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=8 format=3 uid="uid://chqs0rqvw37gt"]
 
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
 [ext_resource type="PackedScene" uid="uid://c51cc5g63vh0p" path="res://scenes/objects/entities/entity.tscn" id="2_4uyk5"]
 [ext_resource type="PackedScene" uid="uid://db2yfx8gb7k7e" path="res://scenes/objects/entityContainer/entity_container.tscn" id="2_cnlcd"]
+[ext_resource type="PackedScene" uid="uid://brhmsv8hbxf0e" path="res://scenes/objects/entities/slime/slime.tscn" id="3_0kioi"]
 [ext_resource type="PackedScene" uid="uid://caj6ncauubbsw" path="res://scenes/objects/UI/talkbox/talkbox.tscn" id="4_fxf51"]
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" node_paths=PackedStringArray("entity_conainer", "talkBox")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nrai7")
+entity_conainer = NodePath("Combat Zone/EntityContainer")
+talkBox = NodePath("Description Box/padding/talkBox")
 
 [node name="Combat Zone" type="Control" parent="."]
 layout_mode = 1
@@ -24,13 +31,13 @@ grow_vertical = 2
 [node name="EntityContainer" parent="Combat Zone" instance=ExtResource("2_cnlcd")]
 position = Vector2(0, -2)
 
-[node name="Entity2" parent="Combat Zone/EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(146, 197)
-scale = Vector2(3.4697, 3.4697)
+[node name="iconSvg" parent="Combat Zone/EntityContainer" instance=ExtResource("2_4uyk5")]
+position = Vector2(141, 169)
+scale = Vector2(5.1897, 5.1897)
 
-[node name="Entity" parent="Combat Zone/EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(987, 205)
-scale = Vector2(3.4697, 3.4697)
+[node name="slime" parent="Combat Zone/EntityContainer" instance=ExtResource("3_0kioi")]
+position = Vector2(924, 218)
+scale = Vector2(7.8, 7.8)
 
 [node name="test level" type="Node2D" parent="."]
 position = Vector2(0, -2)

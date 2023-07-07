@@ -1,5 +1,25 @@
 extends Node2D
 
+class_name EntityContainer
+
+#randomizes the intents of all entities under the container
+func set_intents()->void:
+	for c in get_children():
+		if c.has_method("make_intent"):
+			c.make_intent()
+	
+func get_state_text()->String:
+	var ret_val : String = ""
+	for c in get_children():
+		if c.has_method("describe_intent"):
+			ret_val += c.describe_intent() + "\n" 
+	
+	var filler : Array[String] = ["_"]
+	filler.resize(get_child_count())
+	for i in range(len(filler)):
+		filler[i] = "_"
+
+	return ret_val % filler
 
 #represents the entity that this container has selected
 var selected_entity : Entity = null :
