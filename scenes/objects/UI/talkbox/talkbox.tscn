@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://caj6ncauubbsw"]
+
+[ext_resource type="FontVariation" uid="uid://d0a5dxtbpqi8k" path="res://resources/stefiont.tres" id="1_1fhx3"]
+[ext_resource type="Script" path="res://scenes/objects/UI/talkbox/talkbox.gd" id="1_coih1"]
+[ext_resource type="AudioStream" uid="uid://b7gdapxm7ix8k" path="res://assets/sounds/message-pop-alert-fast.mp3" id="3_5m1fg"]
+
+[sub_resource type="Theme" id="Theme_4iuus"]
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/normal_font = ExtResource("1_1fhx3")
+
+[node name="talkBox" type="Control" node_paths=PackedStringArray("lbltext")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_4iuus")
+script = ExtResource("1_coih1")
+lbltext = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/mono_font_size = 7
+text = "testing123
+abc"
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.07
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5m1fg")

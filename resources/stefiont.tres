@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://d0a5dxtbpqi8k"]
+
+[ext_resource type="FontFile" uid="uid://dd50vh8h61pgr" path="res://assets/fonts/stefiont/Stefiont-Regular.otf" id="1_pm5sq"]
+
+[resource]
+base_font = ExtResource("1_pm5sq")
+spacing_bottom = -15
