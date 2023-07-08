@@ -25,6 +25,7 @@ func send_to_hand(c):
 	card_deck.cards.append(c)
 	c.card_box = self 
 	update_cards_on_rotary()
+	c.tree_entered.connect(c.update_display)
 	c.update_display()
 	c.flip_up()
 
@@ -63,13 +64,11 @@ var selected_card : Card :
 
 @onready var rotary_path : Path2D = $Path2D:
 	set(n_path):
-		print("oooo setget")
 		rotary_path = n_path
 		update_rotary_path()
 
 @export var rotary_width : float = 100:
 	set(n_rotary_width):
-		print("lol")
 		rotary_width = n_rotary_width
 		update_rotary_path() # all with a multi cursor operation btw
 
@@ -121,7 +120,6 @@ func ground_card(card : Card)->void:
 func update_rotary_path():
 	if not is_inside_tree(): return
 	if rotary_path == null:
-		print("ugh i love godot")
 		print(rotary_path)
 		return
 	var curve = rotary_path.curve
@@ -167,7 +165,6 @@ func _ready():
 	update_cards_on_rotary()
 
 func update_cards_on_rotary():
-	print("updating cards")
 	for child in rotary_path.get_children():
 		child.remove_child(child.get_child(0)) #we delete the rotary NOT the card
 		child.tree_exited.connect(update_scroll)
@@ -188,10 +185,8 @@ func update_cards_on_rotary():
 		i += 1
 	for card in card_deck.cards:
 		card.update_display()
-	print("updating the scroll from cards_on_rotary")
 
 func update_scroll():
-	print("updating scroll with the value of %s" % scroll)
 	self.selected_card = null
 	var following_points = rotary_path.get_children()
 	for i in range(len(card_deck.cards)):

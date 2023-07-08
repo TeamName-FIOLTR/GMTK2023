@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=10 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
-[ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_fieuh"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
 layout_mode = 3
@@ -28,7 +27,7 @@ handContainer = NodePath("Rotary Deck")
 
 [node name="Rotary Deck" parent="." node_paths=PackedStringArray("discard_pile", "draw_pile", "focused_card_position") instance=ExtResource("8_j7ybf")]
 z_index = 10
-position = Vector2(565, 502)
+position = Vector2(565, 500)
 discard_pile = NodePath("../discard")
 draw_pile = NodePath("../draw")
 focused_card_position = NodePath("../focus_card_position")
@@ -90,66 +89,6 @@ position = Vector2(538, 141)
 [node name="draw" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
-
-[node name="Card" parent="draw" instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-
-[node name="Card2" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card3" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card4" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card5" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card6" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card7" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card8" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-
-[node name="Card9" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)

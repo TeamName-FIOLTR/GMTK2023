@@ -19,18 +19,19 @@ func flip_down()->void:
 @export var draw_amount : int = 100:
 	set(val):
 		draw_amount = val 
-		if val > 0:
-			draw_indicator.visible = true
-			draw_indicator.text = "draw %s"%draw_amount 
-			draw_indicator.modulate = Color.DARK_GREEN
-		elif val < 0:
-			draw_indicator.visible = true
-			draw_indicator.text = "discard %s"% abs(draw_amount)
-			draw_indicator.modulate = Color.DARK_RED
-		else:
-			draw_indicator.text = "" 
-			draw_indicator.visible = false
-			
+		if draw_indicator:
+			if val > 0:
+				draw_indicator.visible = true
+				draw_indicator.text = "draw %s"%draw_amount 
+				draw_indicator.modulate = Color.DARK_GREEN
+			elif val < 0:
+				draw_indicator.visible = true
+				draw_indicator.text = "discard %s"% abs(draw_amount)
+				draw_indicator.modulate = Color.DARK_RED
+			else:
+				draw_indicator.text = "" 
+				draw_indicator.visible = false
+				
 	get:
 		return draw_amount 
 @export var rules_str : String = "Click To \nPlay :D" :
@@ -42,9 +43,9 @@ func flip_down()->void:
 
 @export var intent_target : Entity.Intent = Entity.Intent.EMPTY
 
-@export var number_display : Label
-@export var rules_text : Label
-@export var draw_indicator : Label
+@onready var number_display : Label = $"Sprite2D/text/numberDisplay"
+@onready var rules_text : Label = $"Sprite2D/Rules Text/Label"
+@onready var draw_indicator : Label = $"Sprite2D/Rules Text/Draw Amount"
 @onready var intent_limit_text : Label = $"Sprite2D/Rules Text/Intent Limit"
 
 

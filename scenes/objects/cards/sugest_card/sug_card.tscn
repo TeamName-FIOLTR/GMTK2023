@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bf3wvnl7ea8j5"]
+[gd_scene load_steps=14 format=3 uid="uid://hvh0a8idehdg"]
 
-[ext_resource type="Script" path="res://scenes/objects/cards/card.gd" id="1_fthal"]
+[ext_resource type="Script" path="res://scenes/objects/cards/sugest_card/sug_card.gd" id="1_0cixh"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]
@@ -191,7 +191,7 @@ _data = {
 
 [node name="Card" type="Node2D"]
 position = Vector2(0, -3)
-script = ExtResource("1_fthal")
+script = ExtResource("1_0cixh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")
