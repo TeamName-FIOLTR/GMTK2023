@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
-[ext_resource type="PackedScene" uid="uid://cn5kjqbybp1ly" path="res://scenes/objects/cards/draw_card/draw_card.tscn" id="10_pbrtr"]
+[ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_fieuh"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
 layout_mode = 3
@@ -91,20 +91,44 @@ position = Vector2(538, 141)
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
-[node name="Card" parent="draw" instance=ExtResource("10_pbrtr")]
-scale = Vector2(1, 1)
-draw_amount = 2
+[node name="Card" parent="draw" instance=ExtResource("10_fieuh")]
+number = 20
+draw_amount = -3
+
+[node name="Card5" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 19
+draw_amount = -3
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card6" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card2" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
 number = 1
+draw_amount = 2
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
 
-[node name="Card2" parent="draw" instance=ExtResource("10_pbrtr")]
-scale = Vector2(1, 1)
+[node name="Card3" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
 number = 2
+draw_amount = 1
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
 
-[node name="Card3" parent="draw" instance=ExtResource("10_pbrtr")]
+[node name="Card4" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
 number = 3
-
-[node name="Card4" parent="draw" instance=ExtResource("10_pbrtr")]
-number = 4
+draw_amount = 1
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)

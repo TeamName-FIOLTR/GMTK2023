@@ -7,11 +7,8 @@ func flip_up()->void:
 func flip_down()->void:
 	$AnimationPlayer.play("flip",1.0,true)
 
-@export var number_display : Label
-@export var rules_text : Label
 
-
-@export var number : int = 10 :
+@export var number : int = -10 :
 	set (val):
 		number = val 
 		if number_display:
@@ -19,18 +16,51 @@ func flip_down()->void:
 	get:
 		return number
 
+@export var draw_amount : int = 100:
+	set(val):
+		draw_amount = val 
+		if val > 0:
+			draw_indicator.visible = true
+			draw_indicator.text = "draw %s"%draw_amount 
+			draw_indicator.modulate = Color.DARK_GREEN
+		elif val < 0:
+			draw_indicator.visible = true
+			draw_indicator.text = "discard %s"% abs(draw_amount)
+			draw_indicator.modulate = Color.DARK_RED
+		else:
+			draw_indicator.text = "" 
+			draw_indicator.visible = false
+			
+	get:
+		return draw_amount 
+@export var rules_str : String = "Click To \nPlay :D" :
+	set(val):
+		rules_text.text = val 
+		rules_str = val 
+	get:
+		return rules_str 
+
+@export var number_display : Label
+@export var rules_text : Label
+@export var draw_indicator : Label
+
+
+
 var pos_tween : Tween
 
 func _init(card_number = 100):
 	number=card_number
 
 
+func update_display()->void:
+	self.number = number #call the setter getter to ensure that we are synced
+	self.draw_amount = draw_amount 
+	self.rules_str = rules_str
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.animation_finished.connect(on_anim_finished)
 	$AnimationPlayer.play("flip_state")
-	self.number = number #call the setter getter to ensure that we are synced
-	pass
+	update_display()
 
 func on_anim_finished(anim):
 	pass 
@@ -65,4 +95,7 @@ func display_dice():
 	$AnimationPlayer.play("Disapear")
 
 func on_play(_decks : RotaryDeck,_entity : Entity)->void:
-	print(_entity.next_target)
+	if draw_amount > 0:
+		_decks.draw_card(draw_amount)
+	else:
+		_decks.discard_random(abs(draw_amount))

@@ -25,6 +25,7 @@ func send_to_hand(c):
 	card_deck.cards.append(c)
 	c.card_box = self 
 	update_cards_on_rotary()
+	c.update_display()
 	c.flip_up()
 
 
@@ -130,14 +131,23 @@ func update_rotary_path():
 	curve.add_point(Vector2(rotary_width,rotary_height),edge_handles*Vector2(-1,1), Vector2.ZERO)
 	pass
 
-#removes all cards that are played
-func discard(card : Card):
-	pass
+#moves the given card to the discard pile
+func discard(card : Card)->void:
+	send_to_discard(card)
 
-func draw()->void:
-	if len(draw_deck.cards) > 0:
-		send_to_hand(draw_deck.cards[0])
+func discard_random(amount: int = 1)->void:
+	for i in range(amount):
+		var to_discard = card_deck.get_random()
+		if to_discard:
+			discard(to_discard)
 
+#draws n cards
+func draw_card(amount : int = 1)->void:
+	for i in range(amount):
+		if len(draw_deck.cards) > 0:
+			send_to_hand(draw_deck.cards[0])
+		else:
+			break 
 func _ready():
 	update_rotary_path()
 	
@@ -147,18 +157,11 @@ func _ready():
 
 	for c in draw_pile.get_children():
 		draw_deck.cards.append(c)
-		print(c)
 
-	print("looking at draw deck")
-	for c in draw_deck.cards:
-		print(c)
-	draw()
-	print("looking at draw deck after draw")	
-	for c in draw_deck.cards:
-		print(c)
-	print("looking at card deck")
+	#draw a starting hand of 4 cards
+	draw_card(4)
+
 	for c in card_deck.cards:
-		print(c)
 		c.card_box = self
 	
 	update_cards_on_rotary()

@@ -6,6 +6,10 @@ class_name Deck
 
 func remove(val : Card)->void:
 	cards.erase(val)
+func get_random()->Card:
+	if len(cards) < 1:
+		return null
+	return cards[randi()%len(cards)]
 
 #returns a single card and removes it from the array
 func draw()->Card:
