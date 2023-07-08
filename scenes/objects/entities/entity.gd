@@ -12,6 +12,9 @@ enum Intent {
 }
 
 @export 
+var difficultyTextDisplay : Label
+
+@export 
 var action_display : IntentIndicator 
 
 @export 
@@ -46,7 +49,9 @@ func attempt()->bool:
 	return self.next_roll >= get_difficulty()
 
 func display_difficulty(diff : int)->void:
-	pass
+	difficultyTextDisplay.text = str(diff)
+	$AnimationPlayer.play("dc")
+
 #figure out later lol , hey thats our name!
 func get_difficulty()->int:
 	return randi()%10 + 11

@@ -1,12 +1,74 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf3wvnl7ea8j5"]
+[gd_scene load_steps=10 format=3 uid="uid://bf3wvnl7ea8j5"]
 
 [ext_resource type="Script" path="res://scenes/objects/cards/card.gd" id="1_fthal"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]
+[ext_resource type="PackedScene" uid="uid://bk6hgigiahfey" path="res://scenes/objects/dice_display/dice_display.tscn" id="5_e8pp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1okg"]
 size = Vector2(515, 771)
+
+[sub_resource type="Animation" id="Animation_jdxv7"]
+resource_name = "Disapear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_4w1pg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iga7f"]
+_data = {
+"Disapear": SubResource("Animation_jdxv7"),
+"RESET": SubResource("Animation_4w1pg")
+}
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("number_display")]
 script = ExtResource("1_fthal")
@@ -35,6 +97,15 @@ theme = ExtResource("4_y86fy")
 text = "20"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="D20NumberDisplay" parent="." instance=ExtResource("5_e8pp3")]
+visible = false
+position = Vector2(7, 14)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iga7f")
+}
 
 [connection signal="input_event" from="Sprite2D/InputArea" to="." method="_on_input_area_input_event"]
 [connection signal="mouse_exited" from="Sprite2D/InputArea" to="." method="_on_input_area_mouse_exited"]

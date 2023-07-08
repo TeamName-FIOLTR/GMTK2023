@@ -34,7 +34,7 @@ func on_entity_selected(entity):
 		handContainer.selected_card = null
 		sc.tween_to(entity.global_position,6.0/60,"global_position")
 		entity.next_roll = apply_effects(sc.number)
-
+		sc.pos_tween.finished.connect(sc.display_dice)
 		entities_with_rolls += 1
 		if entities_with_rolls >= get_child_count():
 			evaluate_entities()

@@ -21,8 +21,14 @@ func _init(card_number = 100):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimationPlayer.animation_finished.connect(on_anim_finished)
 	pass # Replace with function body.
 
+func on_anim_finished(anim):
+	match anim:
+		"Disapear":
+			$D20NumberDisplay.visible = true 
+			$D20NumberDisplay.target_value = number
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -50,7 +56,8 @@ func tween_to(target : Vector2,speed : float = 6/60.0,property="position"):
 	pos_tween = create_tween()
 	pos_tween.tween_property(self, property, target, speed)
 
-
+func display_dice():
+	$AnimationPlayer.play("Disapear")
 #func _on_input_area_mouse_exited():
 #	reset_position()
 #	pass # Replace with function body.
