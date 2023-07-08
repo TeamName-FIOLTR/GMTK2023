@@ -40,10 +40,12 @@ func flip_down()->void:
 	get:
 		return rules_str 
 
+@export var intent_target : Entity.Intent = Entity.Intent.EMPTY
+
 @export var number_display : Label
 @export var rules_text : Label
 @export var draw_indicator : Label
-
+@export var intent_limit_text : Label
 
 
 var pos_tween : Tween
@@ -56,6 +58,11 @@ func update_display()->void:
 	self.number = number #call the setter getter to ensure that we are synced
 	self.draw_amount = draw_amount 
 	self.rules_str = rules_str
+	if self.intent_target != Entity.Intent.EMPTY:
+		intent_limit_text.text = "on %s" % Entity.intent2str(self.intent_target)
+		intent_limit_text.visible = true 
+	else:
+		intent_limit_text.visible = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.animation_finished.connect(on_anim_finished)
@@ -95,7 +102,8 @@ func display_dice():
 	$AnimationPlayer.play("Disapear")
 
 func on_play(_decks : RotaryDeck,_entity : Entity)->void:
-	if draw_amount > 0:
-		_decks.draw_card(draw_amount)
-	else:
-		_decks.discard_random(abs(draw_amount))
+	if _entity.intent == self.intent_target or self.intent_target == Entity.Intent.EMPTY:
+		if draw_amount > 0:
+			_decks.draw_card(draw_amount)
+		elif draw_amount < 0:
+			_decks.discard_random(abs(draw_amount))

@@ -8,7 +8,8 @@ enum Intent {
 	ATTACK,
 	DEFEND,
 	INTERACT,
-	SEDUCE
+	SEDUCE,
+	EMPTY
 }
 
 func hide_dc()->void:
@@ -169,7 +170,7 @@ func on_mouse_entered():
 	var p = get_parent()
 	if p.has_method("set_focused_entity"):
 		p.set_focused_entity(self)
-func intent2str(given_intent : int)->String:
+static func intent2str(given_intent : int)->String:
 	match given_intent:
 		Intent.ATTACK:
 			return "attack"
@@ -182,7 +183,7 @@ func intent2str(given_intent : int)->String:
 		_:
 			return "~.~"
 func describe_intent()->String:
-	var ret_val =  name + " plans to " + adjectives[randi()%len(adjectives)] + " " + intent2str(self.intent) +" "
+	var ret_val =  name + " plans to " + adjectives[randi()%len(adjectives)] + " " + Entity.intent2str(self.intent) +" "
 	if next_target != null:
 		ret_val += next_target.name 
 	ret_val += " with a roll of %s"

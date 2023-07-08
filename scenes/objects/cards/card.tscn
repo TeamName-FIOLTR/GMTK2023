@@ -189,36 +189,51 @@ _data = {
 "flip": SubResource("Animation_ajrbe")
 }
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text")]
 position = Vector2(0, -3)
 script = ExtResource("1_fthal")
 number_display = NodePath("Sprite2D/text/numberDisplay")
 rules_text = NodePath("Sprite2D/Rules Text/Label")
 draw_indicator = NodePath("Sprite2D/Rules Text/Draw Amount")
+intent_limit_text = NodePath("Sprite2D/Rules Text/Intent Limit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")
 
 [node name="Rules Text" type="Node2D" parent="Sprite2D"]
-position = Vector2(-6, 68)
+position = Vector2(-2, -2)
 
 [node name="Draw Amount" type="Label" parent="Sprite2D/Rules Text"]
-offset_left = -126.0
-offset_top = -103.0
-offset_right = 150.0
-offset_bottom = 25.0
+offset_left = -133.0
+offset_top = -40.0
+offset_right = 143.0
+offset_bottom = 88.0
 theme = ExtResource("4_y86fy")
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_27hyf")
 text = "Draw 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Intent Limit" type="Label" parent="Sprite2D/Rules Text"]
+offset_left = -251.0
+offset_top = -235.0
+offset_right = 268.0
+offset_bottom = 77.0
+theme = ExtResource("4_y86fy")
+theme_override_colors/font_color = Color(0, 0.317647, 0.788235, 1)
+theme_override_font_sizes/font_size = 125
+theme_override_styles/normal = SubResource("StyleBoxEmpty_27hyf")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="Sprite2D/Rules Text"]
-offset_left = -331.0
-offset_top = -1.0
-offset_right = 373.0
-offset_bottom = 245.0
+offset_left = -342.0
+offset_top = 102.0
+offset_right = 362.0
+offset_bottom = 348.0
 theme = ExtResource("4_y86fy")
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.101961, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_y4skw")
@@ -235,7 +250,7 @@ position = Vector2(6.5, 26.5)
 shape = SubResource("RectangleShape2D_j1okg")
 
 [node name="text" type="Node2D" parent="Sprite2D"]
-position = Vector2(-3, -150)
+position = Vector2(-1, -307)
 
 [node name="numberDisplay" type="Label" parent="Sprite2D/text"]
 modulate = Color(0, 0, 0, 1)
