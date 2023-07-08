@@ -30,8 +30,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var cumulative_time : float = 0
 func _process(delta):
-	if Input.is_action_pressed("developer_debug"):
-		self.target_value = 5
 	if target_value > 0:
 		offset += delta
 		cumulative_time += delta

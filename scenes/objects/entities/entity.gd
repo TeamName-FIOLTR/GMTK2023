@@ -45,11 +45,21 @@ var intent : int = 0 :
 #tries to perform the given action and
 #returns true if sucessful
 func attempt()->bool:
-	
-	return self.next_roll >= get_difficulty()
+	var diff = get_difficulty()
+	display_difficulty(diff)
+	return self.next_roll >= diff
 
+
+@export var check_pass_color : Color = Color.SEA_GREEN
+@export var check_fail_color : Color = Color.INDIAN_RED
+@export var difficulty_str : String = "v.s. %s"
 func display_difficulty(diff : int)->void:
-	difficultyTextDisplay.text = str(diff)
+	difficultyTextDisplay.text = difficulty_str % str(diff)
+	if self.next_roll >= diff:
+		$Difficulty.modulate = check_pass_color 
+	else:
+		$Difficulty.modulate = check_fail_color 
+	
 	$AnimationPlayer.play("dc")
 
 #figure out later lol , hey thats our name!

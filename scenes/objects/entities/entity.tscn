@@ -54,8 +54,9 @@ _data = {
 "dc": SubResource("Animation_1hjia")
 }
 
-[node name="entity" type="Area2D" node_paths=PackedStringArray("action_display")]
+[node name="entity" type="Area2D" node_paths=PackedStringArray("difficultyTextDisplay", "action_display")]
 script = ExtResource("1_60q11")
+difficultyTextDisplay = NodePath("Difficulty/Control")
 action_display = NodePath("IntentIndecator")
 stats = SubResource("Resource_memk4")
 
@@ -79,19 +80,18 @@ scale = Vector2(0.12, 0.12)
 position = Vector2(0, 15)
 
 [node name="Difficulty" type="Node2D" parent="."]
-position = Vector2(32, -44)
+position = Vector2(12, -31)
+scale = Vector2(0.25, 0.25)
 
 [node name="Control" type="Label" parent="Difficulty"]
-visible = false
-offset_left = 15.0
+offset_left = 16.0
 offset_top = 8.0
-offset_right = 52.0
+offset_right = 115.0
 offset_bottom = 64.0
 theme = ExtResource("6_hfgfr")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wsn5q")
-text = "10"
+text = "v.s. 10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
