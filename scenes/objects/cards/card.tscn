@@ -189,13 +189,12 @@ _data = {
 "flip": SubResource("Animation_ajrbe")
 }
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator")]
 position = Vector2(0, -3)
 script = ExtResource("1_fthal")
 number_display = NodePath("Sprite2D/text/numberDisplay")
 rules_text = NodePath("Sprite2D/Rules Text/Label")
 draw_indicator = NodePath("Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("Sprite2D/Rules Text/Intent Limit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")

@@ -67,6 +67,7 @@ func on_entity_selected(entity):
 
 		#get the next roll for the card
 		entity.next_roll = apply_effects(sc.number)
+		print("calling card for " + str(sc.number))
 		sc.on_play(handContainer,entity) #play the card effects
 		
 		#record that we played on an entity

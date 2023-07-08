@@ -184,6 +184,9 @@ func update_cards_on_rotary():
 		
 		card_offsets[i] = i/float(card_count)
 		i += 1
+	for card in card_deck.cards:
+		card.update_display()
+	
 	update_scroll()
 
 func update_scroll():

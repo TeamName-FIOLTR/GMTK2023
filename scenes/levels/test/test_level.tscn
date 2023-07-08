@@ -94,100 +94,79 @@ scale = Vector2(0.2, 0.2)
 [node name="Card" parent="draw" instance=ExtResource("10_fieuh")]
 number = 10
 draw_amount = 1
-intent_target = 2
+intent_target = 0
 
-[node name="Card4" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-scale = Vector2(1, 1)
-number = 13
-draw_amount = -2
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card2" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
+[node name="Card2" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
 number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card6" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card3" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-position = Vector2(105, -5)
-scale = Vector2(1, 1)
-number = 5
 draw_amount = 1
-intent_target = 1
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card11" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card12" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card7" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card8" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card9" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card10" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 10
-draw_amount = 0
-number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
-rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
-draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
-
-[node name="Card5" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator", "intent_limit_text") instance=ExtResource("10_fieuh")]
-number = 13
-draw_amount = 3
 intent_target = 0
 number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
 rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
 draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
-intent_limit_text = NodePath("../Card/Sprite2D/Rules Text/Intent Limit")
+
+[node name="Card3" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card4" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card5" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card6" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card7" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card8" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card9" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
+
+[node name="Card10" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
+number = 10
+draw_amount = 1
+intent_target = 0
+number_display = NodePath("../Card/Sprite2D/text/numberDisplay")
+rules_text = NodePath("../Card/Sprite2D/Rules Text/Label")
+draw_indicator = NodePath("../Card/Sprite2D/Rules Text/Draw Amount")
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)

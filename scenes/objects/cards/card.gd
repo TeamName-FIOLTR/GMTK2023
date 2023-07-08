@@ -45,7 +45,7 @@ func flip_down()->void:
 @export var number_display : Label
 @export var rules_text : Label
 @export var draw_indicator : Label
-@export var intent_limit_text : Label
+@onready var intent_limit_text : Label = $"Sprite2D/Rules Text/Intent Limit"
 
 
 var pos_tween : Tween
@@ -55,6 +55,7 @@ func _init(card_number = 100):
 
 
 func update_display()->void:
+	print("updating the display for " + self.name)
 	self.number = number #call the setter getter to ensure that we are synced
 	self.draw_amount = draw_amount 
 	self.rules_str = rules_str
@@ -62,7 +63,9 @@ func update_display()->void:
 		intent_limit_text.text = "on %s" % Entity.intent2str(self.intent_target)
 		intent_limit_text.visible = true 
 	else:
-		intent_limit_text.visible = false
+		intent_limit_text.visible = false 
+	intent_limit_text.visible = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.animation_finished.connect(on_anim_finished)
@@ -104,6 +107,8 @@ func display_dice():
 func on_play(_decks : RotaryDeck,_entity : Entity)->void:
 	if _entity.intent == self.intent_target or self.intent_target == Entity.Intent.EMPTY:
 		if draw_amount > 0:
+			print("drawing card! " +str(number) )
 			_decks.draw_card(draw_amount)
 		elif draw_amount < 0:
+			print("discarding card!"+ str(number))
 			_decks.discard_random(abs(draw_amount))
