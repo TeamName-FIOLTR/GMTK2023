@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=11 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
+[ext_resource type="PackedScene" uid="uid://cn5kjqbybp1ly" path="res://scenes/objects/cards/draw_card/draw_card.tscn" id="10_pbrtr"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
 layout_mode = 3
@@ -25,10 +26,11 @@ entity_container = NodePath("Combat Zone/EntityContainer")
 talkBox = NodePath("Description Box/padding/talkBox")
 handContainer = NodePath("Rotary Deck")
 
-[node name="Rotary Deck" parent="." node_paths=PackedStringArray("discard_pile", "focused_card_position") instance=ExtResource("8_j7ybf")]
+[node name="Rotary Deck" parent="." node_paths=PackedStringArray("discard_pile", "draw_pile", "focused_card_position") instance=ExtResource("8_j7ybf")]
 z_index = 10
-position = Vector2(564, 503)
+position = Vector2(565, 502)
 discard_pile = NodePath("../discard")
+draw_pile = NodePath("../draw")
 focused_card_position = NodePath("../focus_card_position")
 rotary_width = 400.0
 center_handle = Vector2(-300, 0)
@@ -43,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EntityContainer" parent="Combat Zone" instance=ExtResource("2_cnlcd")]
-position = Vector2(0, -2)
+position = Vector2(0, -1)
 
 [node name="iconSvg" parent="Combat Zone/EntityContainer" instance=ExtResource("2_4uyk5")]
 position = Vector2(137, 203)
@@ -89,6 +91,21 @@ position = Vector2(538, 141)
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
+[node name="Card" parent="draw" instance=ExtResource("10_pbrtr")]
+scale = Vector2(1, 1)
+draw_amount = 2
+number = 1
+
+[node name="Card2" parent="draw" instance=ExtResource("10_pbrtr")]
+scale = Vector2(1, 1)
+number = 2
+
+[node name="Card3" parent="draw" instance=ExtResource("10_pbrtr")]
+number = 3
+
+[node name="Card4" parent="draw" instance=ExtResource("10_pbrtr")]
+number = 4
+
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
-position = Vector2(1087, 564)
+position = Vector2(1087, 561)
 scale = Vector2(0.2, 0.2)

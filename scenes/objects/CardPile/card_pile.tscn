@@ -1,15 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://box8x85l0ie8s"]
+[gd_scene load_steps=2 format=3 uid="uid://box8x85l0ie8s"]
 
 [ext_resource type="Script" path="res://scenes/objects/CardPile/card_pile.gd" id="1_nirt5"]
-[ext_resource type="Texture2D" uid="uid://cy8p7g8iabiie" path="res://assets/textures/cards/card_back.png" id="1_qngcp"]
 
-[node name="CardPile" type="Node2D" node_paths=PackedStringArray("card_scale")]
+[node name="CardPile" type="Node2D"]
 script = ExtResource("1_nirt5")
-card_scale = NodePath("Node2D")
-
-[node name="CardBack" type="Sprite2D" parent="."]
-position = Vector2(4, 10)
-texture = ExtResource("1_qngcp")
-
-[node name="Node2D" type="Node2D" parent="."]
-scale = Vector2(10, 10)

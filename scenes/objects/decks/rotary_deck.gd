@@ -11,15 +11,23 @@ func purge_card(c : Card)->void:
 	draw_deck.remove(c)
 	discard_deck.remove(c)
 
+	if c.get_parent():
+		c.get_parent().remove_child(c)
+
 #send the card to the discard pile
 func send_to_discard(c : Card):
 	purge_card(c)
 	discard_deck.cards.append(c)
 	update_cards_on_rotary()
+
 func send_to_hand(c):
 	purge_card(c)
 	card_deck.cards.append(c)
+	c.card_box = self 
 	update_cards_on_rotary()
+	c.flip_up()
+
+
 func send_to_draw(c):
 	purge_card(c)
 	draw_deck.cards.append(c)
@@ -127,7 +135,8 @@ func discard(card : Card):
 	pass
 
 func draw()->void:
-	send_to_hand(draw_deck.cards[0])
+	if len(draw_deck.cards) > 0:
+		send_to_hand(draw_deck.cards[0])
 
 func _ready():
 	update_rotary_path()
@@ -136,25 +145,20 @@ func _ready():
 	discard_deck = Deck.new()
 	draw_deck = Deck.new()
 
+	for c in draw_pile.get_children():
+		draw_deck.cards.append(c)
+		print(c)
 
-
-	var card : PackedScene= load("res://scenes/objects/cards/card.tscn")
-	card_deck.cards.append_array([card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate()])
-	
-	draw_deck.cards.append_array([card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate(),
-			  card.instantiate()])
-	
+	print("looking at draw deck")
+	for c in draw_deck.cards:
+		print(c)
+	draw()
+	print("looking at draw deck after draw")	
+	for c in draw_deck.cards:
+		print(c)
+	print("looking at card deck")
 	for c in card_deck.cards:
-		c.number = randi()%20
+		print(c)
 		c.card_box = self
 	
 	update_cards_on_rotary()

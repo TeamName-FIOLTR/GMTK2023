@@ -6,7 +6,10 @@ func flip_up()->void:
 	$AnimationPlayer.play("flip")
 func flip_down()->void:
 	$AnimationPlayer.play("flip",1.0,true)
+
 @export var number_display : Label
+@export var rules_text : Label
+
 
 @export var number : int = 10 :
 	set (val):
@@ -25,7 +28,9 @@ func _init(card_number = 100):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.animation_finished.connect(on_anim_finished)
-	pass # Replace with function body.
+	$AnimationPlayer.play("flip_state")
+	self.number = number #call the setter getter to ensure that we are synced
+	pass
 
 func on_anim_finished(anim):
 	pass 
