@@ -25,7 +25,7 @@ var adjectives : Array[String] = ["angrily","visciously","excitedly","slowly","s
 var has_focus : bool = false
 #represents the roll that will be used in the next
 #step of the game
-var next_roll : int :
+var next_roll : int = -1:
 	set(val):
 		next_roll = val 
 	get:
@@ -42,11 +42,14 @@ var intent : int = 0 :
 #tries to perform the given action and
 #returns true if sucessful
 func attempt()->bool:
+	
 	return self.next_roll >= get_difficulty()
 
+func display_difficulty(diff : int)->void:
+	pass
 #figure out later lol , hey thats our name!
 func get_difficulty()->int:
-	return 10
+	return randi()%10 + 11
 
 func make_intent()->void:
 	self.intent = stats.get_action()
