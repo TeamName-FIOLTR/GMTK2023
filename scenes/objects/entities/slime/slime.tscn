@@ -93,7 +93,7 @@ libraries = {
 }
 
 [node name="Difficulty" type="Node2D" parent="."]
-position = Vector2(-31, -18)
+position = Vector2(-44, -18)
 scale = Vector2(0.15, 0.15)
 
 [node name="Control" type="Label" parent="Difficulty"]
@@ -109,6 +109,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="D20NumberDisplay" parent="." instance=ExtResource("7_gejit")]
-visible = false
-position = Vector2(-38, -13)
+position = Vector2(-16, -14)
 scale = Vector2(0.030035, 0.030035)

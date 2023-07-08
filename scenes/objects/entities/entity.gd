@@ -159,7 +159,7 @@ func get_target():
 	return sibling
 
 func on_focus_enter()->void:
-	modulate = Color(0.5,0.5,0.5)
+	modulate = Color(1,1,1)
 	has_focus = true
 func on_focus_exit()->void:
 	self.modulate = Color(1,1,1)
