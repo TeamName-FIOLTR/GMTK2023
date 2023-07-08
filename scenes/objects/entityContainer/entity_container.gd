@@ -2,12 +2,17 @@ extends Node2D
 
 class_name EntityContainer
 
+signal entity_selected
+
 #randomizes the intents of all entities under the container
 func set_intents()->void:
 	for c in get_children():
 		if c.has_method("make_intent"):
 			c.make_intent()
-	
+func _ready():
+	entity_selected.connect(on_entity_select)
+func on_entity_select(en)->void:
+	print(en.name)
 func get_state_text()->String:
 	var ret_val : String = ""
 	for c in get_children():

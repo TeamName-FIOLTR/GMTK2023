@@ -21,6 +21,8 @@ var stats : EntityStats
 @export
 var adjectives : Array[String] = ["angrily","visciously","excitedly","slowly","sadly","agressivly"]
 
+
+var has_focus : bool = false
 #represents the roll that will be used in the next
 #step of the game
 var next_roll : int :
@@ -71,10 +73,14 @@ func get_target():
 	return sibling
 
 func on_focus_enter()->void:
-	modulate = Color(0,0,0)
+	modulate = Color(0.5,0.5,0.5)
+	has_focus = true
 func on_focus_exit()->void:
 	self.modulate = Color(1,1,1)
+	has_focus = false  
+var mouse_in : bool = false
 func on_mouse_entered():
+	mouse_in = true
 	var p = get_parent()
 	if p.has_method("set_focused_entity"):
 		p.set_focused_entity(self)
@@ -95,8 +101,14 @@ func describe_intent()->String:
 	if next_target != null:
 		ret_val += next_target.name 
 	ret_val += " with a roll of %s"
-	return ret_val
+	return ret_val 
+func on_mouse_exited():
+	mouse_in = false
+func _input(event):
+	if mouse_in and has_focus and event is InputEventMouseButton and event.is_pressed():
+		get_parent().entity_selected.emit(self)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	intent_set.connect(on_intent_set)
 	self.mouse_entered.connect(on_mouse_entered)
+	self.mouse_exited.connect(on_mouse_exited)

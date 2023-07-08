@@ -1,7 +1,8 @@
 extends Control
 
 @export var entity_conainer : EntityContainer
-@export var talkBox : TalkBox
+@export var talkBox : TalkBox 
+@export var handContainer : RotaryDeck
 
 var scene_text : String = ""
 
@@ -17,10 +18,16 @@ func update_scene()->void:
 	print("scene_text")
 
 
+func on_entity_selected(entity):
+	if handContainer.selected_card:
+		var sc = handContainer.selected_card
+		handContainer.ground_card(sc)
+		handContainer.selected_card = null
+		sc.tween_to(entity.global_position,6.0/60,"global_position")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	entity_conainer.entity_selected.connect(on_entity_selected)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

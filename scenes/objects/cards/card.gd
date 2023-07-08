@@ -48,7 +48,7 @@ func tween_to(target : Vector2,speed : float = 6/60.0,property="position"):
 	if pos_tween:
 		pos_tween.kill()
 	pos_tween = create_tween()
-	pos_tween.tween_property($Sprite2D, property, target, speed)
+	pos_tween.tween_property(self, property, target, speed)
 
 
 #func _on_input_area_mouse_exited():

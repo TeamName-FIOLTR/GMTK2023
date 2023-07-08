@@ -11,12 +11,10 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcoet"]
 size = Vector2(1185, 657)
 
-[node name="Rotary Deck" type="Node2D" node_paths=PackedStringArray("card_deck")]
+[node name="Rotary Deck" type="Node2D"]
 script = ExtResource("1_lgwug")
 rotary_width = 175.0
 center_handle = Vector2(-125, 0)
-rotart_sensativity = null
-card_deck = NodePath("")
 card_scale = 0.1
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -27,5 +25,7 @@ curve = SubResource("Curve2D_dvpjw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Click Area"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_vcoet")
+
+[node name="card_timeout" type="Node2D" parent="."]
 
 [connection signal="input_event" from="Click Area" to="." method="_on_click_area_input_event"]

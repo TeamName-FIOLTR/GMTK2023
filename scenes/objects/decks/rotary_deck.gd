@@ -58,10 +58,23 @@ var selected_card : Card :
 
 @export var card_scale : float = 1.0
 
+
+
 var card_offsets : Array[float]
 
 # Called when the node enters the scene tree for the first time.
 
+#prevents the given card from spining with the roter,
+#note as of CURRENTLY this cannot be undone, so don't use
+#it if you need to undo it
+func ground_card(card : Card)->void:
+	var gp = card.global_position 
+	card.scale *= card.get_parent().scale
+	card.get_parent().remove_child(card)
+	$card_timeout.add_child(card)
+	card.global_position = gp
+	pass
+	
 func update_rotary_path():
 #	print("urmum")
 #	print(rotary_path)
