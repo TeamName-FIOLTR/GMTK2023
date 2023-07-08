@@ -94,7 +94,6 @@ scale = Vector2(0.2, 0.2)
 [node name="Card" parent="draw" instance=ExtResource("10_fieuh")]
 number = 10
 draw_amount = 1
-intent_target = 0
 
 [node name="Card2" parent="draw" node_paths=PackedStringArray("number_display", "rules_text", "draw_indicator") instance=ExtResource("10_fieuh")]
 number = 10

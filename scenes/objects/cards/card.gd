@@ -104,11 +104,17 @@ func tween_to(target : Vector2,speed : float = 6/60.0,property="position"):
 func display_dice():
 	$AnimationPlayer.play("Disapear")
 
+#called only if we match intents
+func play_effect(_decks : RotaryDeck,_entity : Entity)->void:
+	if draw_amount > 0:
+		print("drawing card! " +str(number) )
+		_decks.draw_card(draw_amount)
+	elif draw_amount < 0:
+		print("discarding card!"+ str(number))
+		_decks.discard_random(abs(draw_amount))
+	pass
+
+#called everytime we play a card
 func on_play(_decks : RotaryDeck,_entity : Entity)->void:
 	if _entity.intent == self.intent_target or self.intent_target == Entity.Intent.EMPTY:
-		if draw_amount > 0:
-			print("drawing card! " +str(number) )
-			_decks.draw_card(draw_amount)
-		elif draw_amount < 0:
-			print("discarding card!"+ str(number))
-			_decks.discard_random(abs(draw_amount))
+		play_effect(_decks,_entity)
