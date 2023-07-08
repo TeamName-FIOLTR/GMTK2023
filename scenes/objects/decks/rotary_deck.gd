@@ -167,11 +167,13 @@ func _ready():
 	update_cards_on_rotary()
 
 func update_cards_on_rotary():
+	print("updating cards")
 	for child in rotary_path.get_children():
 		child.remove_child(child.get_child(0)) #we delete the rotary NOT the card
+		child.tree_exited.connect(update_scroll)
 		child.queue_free()
 	var card_count = card_deck.cards.size()
-	
+
 	card_offsets.resize(card_count)
 
 	
@@ -181,15 +183,15 @@ func update_cards_on_rotary():
 		follower.add_child(card)
 		rotary_path.add_child(follower)
 		follower.scale = Vector2.ONE*card_scale
-		
+		card.tree_entered.connect(update_scroll)
 		card_offsets[i] = i/float(card_count)
 		i += 1
 	for card in card_deck.cards:
 		card.update_display()
-	
-	update_scroll()
+	print("updating the scroll from cards_on_rotary")
 
 func update_scroll():
+	print("updating scroll with the value of %s" % scroll)
 	self.selected_card = null
 	var following_points = rotary_path.get_children()
 	for i in range(len(card_deck.cards)):
