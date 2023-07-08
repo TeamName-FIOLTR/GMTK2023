@@ -18,7 +18,8 @@ func set_intents()->void:
 		if c.has_method("make_intent"):
 			c.make_intent()
 			c.hide_dc()
-			c.roll_display.visible = false
+			c.roll_display.visible = false 
+			c.clear_residuals()
 func _ready():
 	entity_selected.connect(on_entity_select)
 func on_entity_select(en)->void:

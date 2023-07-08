@@ -10,8 +10,10 @@
 
 [sub_resource type="Resource" id="Resource_memk4"]
 script = ExtResource("2_g8lup")
-hp = 20
+hp = 10
 ac = 10
+attack = 2
+defence = 1
 actions = Array[int]([35, 35, 25, 5])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imrec"]
@@ -55,9 +57,10 @@ _data = {
 "dc": SubResource("Animation_1hjia")
 }
 
-[node name="entity" type="Area2D" node_paths=PackedStringArray("difficultyTextDisplay", "action_display", "roll_display")]
+[node name="entity" type="Area2D" node_paths=PackedStringArray("difficultyTextDisplay", "health_display", "action_display", "roll_display")]
 script = ExtResource("1_60q11")
 difficultyTextDisplay = NodePath("Difficulty/Control")
+health_display = NodePath("HeartDisplay")
 action_display = NodePath("IntentIndecator")
 stats = SubResource("Resource_memk4")
 roll_display = NodePath("D20NumberDisplay")

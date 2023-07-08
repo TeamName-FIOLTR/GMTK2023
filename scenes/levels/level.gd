@@ -33,11 +33,25 @@ func apply_effects(x : int)->int:
 		x = ef.call(x)
 	return x
 
-func evaluate_entities():
+
+#this is the roll checking phase
+func check_rolls()->void:
 	for e in entity_container.get_children():
 		if e.has_method("attempt"):
+			e.ensure_roll() #make sure that we rolled SOMETHING, for the AI entities
 			e.attempt()
 			e.next_roll = -1
+	
+#this is the roll checking phase
+func apply_damage()->void:
+	for e in entity_container.get_children():
+		if e.has_method("attempt"):
+			e.apply_damage()
+
+
+func evaluate_entities():
+	check_rolls()
+	apply_damage()
 
 func on_entity_selected(entity):
 	if entity.next_roll == -1 and handContainer.selected_card:
@@ -56,6 +70,8 @@ func on_entity_selected(entity):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	entity_container.entity_selected.connect(on_entity_selected)
+
+	update_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

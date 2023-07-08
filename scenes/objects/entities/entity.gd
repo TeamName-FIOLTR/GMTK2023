@@ -20,6 +20,8 @@ func hide_dc()->void:
 @export 
 var difficultyTextDisplay : Label
 
+@export var health_display : HeartDisplay
+
 @export 
 var action_display : IntentIndicator 
 
@@ -47,13 +49,57 @@ var intent : int = 0 :
 		intent = val 
 		action_display.animate_set(intent)
 	get:
-		return intent
+		return intent 
+
+var total_damage : int = 0
+var total_defence : int = 0
+
+func damage(amount : int)->void:
+	total_damage += amount 
+
+func defend(amount : int)->void:
+	total_defence += amount 
+
+func compute_damage_taken()->int:
+	var ret_val : int = total_damage - total_defence 
+	if ret_val < 0:
+		return 0
+	return ret_val 
+#called to get a roll for AI,
+#can be overidden
+func generate_roll()->int:
+	return randi()%20 +1
+
+func ensure_roll()->void:
+	if self.next_roll == -1:
+		self.next_roll = generate_roll()
+
+#actually applys the damage to the character, 
+#inteanded for use in the damage step
+func apply_damage()->void:
+	stats.hp -= compute_damage_taken()
+	health_display.current_health = stats.hp
+	health_display.update_heart_values()
+	
+func handle_success()->void:
+	match self.intent:
+		Intent.ATTACK:
+			next_target.damage(stats.attack)
+		Intent.DEFEND:
+			defend(stats.defence) 
+
+
 #tries to perform the given action and
 #returns true if sucessful
 func attempt()->bool:
 	var diff = get_difficulty()
 	display_difficulty(diff)
-	return self.next_roll >= diff
+	var ret_val = self.next_roll >= diff 
+	
+	if ret_val:
+		handle_success()
+	
+	return ret_val
 
 
 @export var check_pass_color : Color = Color.SEA_GREEN
@@ -75,7 +121,18 @@ func display_difficulty(diff : int)->void:
 
 #figure out later lol , hey thats our name!
 func get_difficulty()->int:
-	return randi()%10 + 11
+	match self.intent:
+		Intent.ATTACK:
+			return next_target.stats.ac
+		Intent.SEDUCE:
+			return 20
+		_:
+			return randi()%20 + 1
+
+#remove any lingering damage from the previous round
+func clear_residuals()->void:
+	total_damage = 0
+	total_defence = 0
 
 func make_intent()->void:
 	self.intent = stats.get_action()
@@ -138,6 +195,12 @@ func _input(event):
 		get_parent().entity_selected.emit(self)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health_display.max_health = stats.hp 
+	health_display.current_health = stats.hp 
+
+	health_display.init_hearts()
+	health_display.update_heart_values()
+
 	intent_set.connect(on_intent_set)
 	self.mouse_entered.connect(on_mouse_entered)
 	self.mouse_exited.connect(on_mouse_exited)

@@ -15,8 +15,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = -3.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -50,7 +50,7 @@ position = Vector2(137, 203)
 scale = Vector2(5.1897, 5.1897)
 
 [node name="slime" parent="Combat Zone/EntityContainer" instance=ExtResource("3_0kioi")]
-position = Vector2(924, 218)
+position = Vector2(924, 217)
 scale = Vector2(7.8, 7.8)
 requires_input = false
 

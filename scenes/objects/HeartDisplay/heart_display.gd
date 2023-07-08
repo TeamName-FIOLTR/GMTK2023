@@ -1,5 +1,6 @@
 extends Node2D
 
+class_name HeartDisplay
 
 var single_heart = preload("res://scenes/objects/HeartDisplay/single_heart.tscn")
 
@@ -17,8 +18,10 @@ var heart_spacing : float = 510
 
 #ensures we have the correct number of hearts under neith the hp container
 func init_hearts()->void:
+	for c in $transform.get_children():
+		c.queue_free()
 	var start : float = -heart_spacing * max_health  / 4
-	for i in range(max_health / 2):
+	for i in range(int(max_health / 2)):
 		var h = single_heart.instantiate()
 		h.position = direction*(i*heart_spacing+start) 
 		$transform.add_child(h)
@@ -34,6 +37,6 @@ func update_heart_values()->void:
 		print(eat_amount)
 		$transform.get_child(i).frame = eat_amount
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	init_hearts()
-	update_heart_values()
+#func _ready():
+#	init_hearts()
+#	update_heart_values()

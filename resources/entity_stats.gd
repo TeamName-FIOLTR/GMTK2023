@@ -6,6 +6,10 @@ class_name EntityStats
 var hp : int = 20 #how much damage it can take
 @export
 var ac : int = 10 #how hard it is to hit
+
+@export var attack = 2
+@export var defence = 1
+
 @export
 var actions : Array[int] = [35,35,25,5]
 
