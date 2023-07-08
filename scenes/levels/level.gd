@@ -14,12 +14,23 @@ var entities_with_rolls : int = 0
 #runs all the code necessary for updating the scene
 #for the next stage of the game
 func update_scene()->void:
+	handContainer.clean()	
 	entity_container.set_intents()
 	scene_text = entity_container.get_state_text()
 	talkBox.clear_text()
 	talkBox.target_text = scene_text
+	entities_with_rolls = 0
+
+#array of functional effects to apply to cards
+var round_effects  = []
+var long_effects = [] 
+
 
 func apply_effects(x : int)->int:
+	for ef in round_effects:
+		x = ef.call(x)
+	for ef in long_effects:
+		x = ef.call(x)
 	return x
 
 func evaluate_entities():

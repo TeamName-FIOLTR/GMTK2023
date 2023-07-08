@@ -27,7 +27,10 @@ text = "testing123
 abc"
 
 [node name="TypeTimer" type="Timer" parent="."]
-wait_time = 0.07
+wait_time = 0.01
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5m1fg")
+
+[node name="SoundTimeout" type="Timer" parent="."]
+wait_time = 0.07

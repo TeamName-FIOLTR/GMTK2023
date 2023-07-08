@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=10 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://caj6ncauubbsw" path="res://scenes/objects/UI/talkbox/talkbox.tscn" id="4_fxf51"]
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
+[ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
 layout_mode = 3
@@ -24,9 +25,10 @@ entity_container = NodePath("Combat Zone/EntityContainer")
 talkBox = NodePath("Description Box/padding/talkBox")
 handContainer = NodePath("Rotary Deck")
 
-[node name="Rotary Deck" parent="." node_paths=PackedStringArray("focused_card_position") instance=ExtResource("8_j7ybf")]
+[node name="Rotary Deck" parent="." node_paths=PackedStringArray("discard_pile", "focused_card_position") instance=ExtResource("8_j7ybf")]
 z_index = 10
-position = Vector2(522, 487)
+position = Vector2(564, 503)
+discard_pile = NodePath("../discard")
 focused_card_position = NodePath("../focus_card_position")
 rotary_width = 400.0
 center_handle = Vector2(-300, 0)
@@ -76,6 +78,16 @@ offset_bottom = 40.0
 
 [node name="talkBox" parent="Description Box/padding" instance=ExtResource("4_fxf51")]
 layout_mode = 1
+offset_top = -2.0
+offset_bottom = -2.0
 
 [node name="focus_card_position" type="Node2D" parent="."]
 position = Vector2(538, 141)
+
+[node name="draw" parent="." instance=ExtResource("9_snrgk")]
+position = Vector2(53, 569)
+scale = Vector2(0.2, 0.2)
+
+[node name="discard" parent="." instance=ExtResource("9_snrgk")]
+position = Vector2(1087, 564)
+scale = Vector2(0.2, 0.2)

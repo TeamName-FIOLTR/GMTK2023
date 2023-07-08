@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf3wvnl7ea8j5"]
+[gd_scene load_steps=13 format=3 uid="uid://bf3wvnl7ea8j5"]
 
 [ext_resource type="Script" path="res://scenes/objects/cards/card.gd" id="1_fthal"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]
 [ext_resource type="PackedScene" uid="uid://bk6hgigiahfey" path="res://scenes/objects/dice_display/dice_display.tscn" id="5_e8pp3"]
+[ext_resource type="Texture2D" uid="uid://cy8p7g8iabiie" path="res://assets/textures/cards/card_back.png" id="6_vhj5c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4skw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1okg"]
 size = Vector2(515, 771)
@@ -63,11 +67,124 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardBack:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardBack:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("D20NumberDisplay:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ajrbe"]
+resource_name = "flip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardBack:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("D20NumberDisplay:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iga7f"]
 _data = {
 "Disapear": SubResource("Animation_jdxv7"),
-"RESET": SubResource("Animation_4w1pg")
+"RESET": SubResource("Animation_4w1pg"),
+"flip": SubResource("Animation_ajrbe")
 }
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("number_display")]
@@ -76,6 +193,21 @@ number_display = NodePath("Sprite2D/text/numberDisplay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")
+
+[node name="Rules Text" type="Node2D" parent="Sprite2D"]
+position = Vector2(0, 212)
+
+[node name="Label" type="Label" parent="Sprite2D/Rules Text"]
+offset_left = -337.0
+offset_top = -79.0
+offset_right = 367.0
+offset_bottom = 190.0
+theme = ExtResource("4_y86fy")
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.101961, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_y4skw")
+text = "Just a 
+number :D"
+horizontal_alignment = 1
 
 [node name="InputArea" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("card")]
 script = ExtResource("3_bsyqd")
@@ -106,6 +238,11 @@ position = Vector2(9, -203)
 libraries = {
 "": SubResource("AnimationLibrary_iga7f")
 }
+
+[node name="CardBack" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-14, 33)
+texture = ExtResource("6_vhj5c")
 
 [connection signal="input_event" from="Sprite2D/InputArea" to="." method="_on_input_area_input_event"]
 [connection signal="mouse_exited" from="Sprite2D/InputArea" to="." method="_on_input_area_mouse_exited"]

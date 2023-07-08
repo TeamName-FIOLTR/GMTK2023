@@ -11,6 +11,10 @@ enum Intent {
 	SEDUCE
 }
 
+func hide_dc()->void:
+	print("hiding dc")
+	$AnimationPlayer.play_backwards("dc")
+
 @export 
 var difficultyTextDisplay : Label
 

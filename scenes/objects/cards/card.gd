@@ -2,7 +2,10 @@ extends Node2D
 class_name Card
 
 var card_box #reference to our parent container, whatever it may be
-
+func flip_up()->void:
+	$AnimationPlayer.play("flip")
+func flip_down()->void:
+	$AnimationPlayer.play("flip",1.0,true)
 @export var number_display : Label
 
 @export var number : int = 10 :

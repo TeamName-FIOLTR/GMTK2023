@@ -2,6 +2,15 @@ extends Node2D
 class_name RotaryDeck
 
 
+@export var discard_pile : CardPile 
+@export var draw_pile : CardPile
+
+#remove all used cards
+func clean()->void:
+	for c in $card_timeout.get_children():
+		discard_pile.take_card(c)
+	update_cards_on_rotary()
+
 @export var focused_card_position : Node2D
 
 #represents the card that is currently selected
@@ -23,10 +32,7 @@ var selected_card : Card :
 @onready var rotary_path : Path2D = $Path2D:
 	set(n_path):
 		print("oooo setget")
-#		print(n_path)
-#		print(rotary_path)
 		rotary_path = n_path
-#		print(rotary_path)
 		update_rotary_path()
 
 @export var rotary_width : float = 100:
@@ -91,7 +97,9 @@ func update_rotary_path():
 	curve.add_point(Vector2(rotary_width,rotary_height),edge_handles*Vector2(-1,1), Vector2.ZERO)
 	pass
 
-
+#removes all cards that are played
+func discard():
+	pass
 
 func _ready():
 	update_rotary_path()
@@ -103,17 +111,21 @@ func _ready():
 			  card.instantiate(),
 			  card.instantiate(),
 			  card.instantiate()])
+	
 	for c in card_deck.cards:
 		c.number = randi()%20
 		c.card_box = self
+	
 	update_cards_on_rotary()
-	pass # Replace with function body.
 
 func update_cards_on_rotary():
 	for child in rotary_path.get_children():
+		child.remove_child(child.get_child(0)) #we delete the rotary NOT the card
 		child.queue_free()
 	var card_count = card_deck.cards.size()
+	
 	card_offsets.resize(card_count)
+
 	
 	var i = 0 # POV: no enumerate()
 	for card in card_deck.cards:
@@ -132,11 +144,6 @@ func update_scroll():
 	for i in range(len(card_deck.cards)):
 		following_points[i].progress_ratio = clamp(card_offsets[i]+scroll,0.001,0.999)
 	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_click_area_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
