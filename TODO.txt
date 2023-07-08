@@ -1,0 +1,5 @@
+make draw and discard piles with animations
+get cards disapearing with some kind of dice animation on entity select
+add card effects in <- I have an idea for this
+entrance and exit ui for the game
+damage roll resolution / resolution based on intent
