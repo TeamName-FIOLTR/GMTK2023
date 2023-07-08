@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=9 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brhmsv8hbxf0e" path="res://scenes/objects/entities/slime/slime.tscn" id="3_0kioi"]
 [ext_resource type="PackedScene" uid="uid://caj6ncauubbsw" path="res://scenes/objects/UI/talkbox/talkbox.tscn" id="4_fxf51"]
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
+[ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_conainer", "talkBox")]
 layout_mode = 3
@@ -17,9 +18,19 @@ offset_top = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_nrai7")
 entity_conainer = NodePath("Combat Zone/EntityContainer")
 talkBox = NodePath("Description Box/padding/talkBox")
+
+[node name="Rotary Deck" parent="." node_paths=PackedStringArray("focused_card_position") instance=ExtResource("8_j7ybf")]
+z_index = 10
+position = Vector2(522, 490)
+focused_card_position = NodePath("../focus_card_position")
+rotary_width = 400.0
+center_handle = Vector2(-300, 0)
+rotart_sensativity = 3.0
+card_scale = 0.2
 
 [node name="Combat Zone" type="Control" parent="."]
 layout_mode = 1
@@ -50,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 0.572
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("4_miqya")
 
 [node name="padding" type="Control" parent="Description Box"]
@@ -63,3 +75,6 @@ offset_bottom = 40.0
 
 [node name="talkBox" parent="Description Box/padding" instance=ExtResource("4_fxf51")]
 layout_mode = 1
+
+[node name="focus_card_position" type="Node2D" parent="."]
+position = Vector2(538, 141)

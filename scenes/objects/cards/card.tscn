@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf3wvnl7ea8j5"]
+[gd_scene load_steps=6 format=3 uid="uid://bf3wvnl7ea8j5"]
 
 [ext_resource type="Script" path="res://scenes/objects/cards/card.gd" id="1_fthal"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
+[ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1okg"]
 size = Vector2(515, 771)
 
-[node name="Card" type="Node2D"]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("number_display")]
 script = ExtResource("1_fthal")
+number_display = NodePath("Sprite2D/text/numberDisplay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")
@@ -20,6 +22,19 @@ card = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/InputArea"]
 position = Vector2(6.5, 26.5)
 shape = SubResource("RectangleShape2D_j1okg")
+
+[node name="text" type="Node2D" parent="Sprite2D"]
+
+[node name="numberDisplay" type="Label" parent="Sprite2D/text"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -149.0
+offset_top = -19.0
+offset_right = 151.0
+offset_bottom = 114.0
+theme = ExtResource("4_y86fy")
+text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="input_event" from="Sprite2D/InputArea" to="." method="_on_input_area_input_event"]
 [connection signal="mouse_exited" from="Sprite2D/InputArea" to="." method="_on_input_area_mouse_exited"]

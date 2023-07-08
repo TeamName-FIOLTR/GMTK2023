@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://botlkbamgp28p"]
+
+[ext_resource type="FontVariation" uid="uid://d0a5dxtbpqi8k" path="res://resources/stefiont.tres" id="1_1ecsn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajte1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[resource]
+Label/font_sizes/font_size = 120
+Label/fonts/font = ExtResource("1_1ecsn")
+Label/styles/normal = SubResource("StyleBoxFlat_ajte1")
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/normal_font = ExtResource("1_1ecsn")

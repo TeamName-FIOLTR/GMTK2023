@@ -1,6 +1,24 @@
-@tool
 extends Node2D
 class_name RotaryDeck
+
+
+@export var focused_card_position : Node2D
+
+#represents the card that is currently selected
+var selected_card : Card : 
+	set (val):
+		if val and val == selected_card:
+			val.reset_position()
+			selected_card = null 
+		else:
+			if selected_card:
+				selected_card.reset_position()
+			selected_card = val 
+			if selected_card:
+				selected_card.tween_to(focused_card_position.global_position,10/60.0,"global_position")
+	get:
+		return selected_card
+
 
 @onready var rotary_path : Path2D = $Path2D:
 	set(n_path):
@@ -32,6 +50,8 @@ class_name RotaryDeck
 		center_handle = n_center_handle
 		update_rotary_path() # all with a multi cursor operation btw
 
+@export var rotart_sensativity : float = 5
+
 @export var card_deck : Deck
 
 @export var scroll : float = 0
@@ -61,9 +81,18 @@ func update_rotary_path():
 
 
 func _ready():
+	update_rotary_path()
 	card_deck = Deck.new()
 	var card : PackedScene= load("res://scenes/objects/cards/card.tscn")
-	card_deck.cards.append_array([card.instantiate(),card.instantiate(),card.instantiate(),card.instantiate(),card.instantiate(),card.instantiate()])
+	card_deck.cards.append_array([card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate()])
+	for c in card_deck.cards:
+		c.number = randi()%20
+		c.card_box = self
 	update_cards_on_rotary()
 	pass # Replace with function body.
 
@@ -85,6 +114,7 @@ func update_cards_on_rotary():
 	update_scroll()
 
 func update_scroll():
+	self.selected_card = null
 	var following_points = rotary_path.get_children()
 	for i in range(len(card_deck.cards)):
 		following_points[i].progress_ratio = clamp(card_offsets[i]+scroll,0.001,0.999)
@@ -99,6 +129,6 @@ func _on_click_area_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 #		print("/")
 		if abs(event.relative.x)>abs(event.relative.y):
-			scroll += clamp(event.relative.x/1000.0,-0.5,1.5)
+			scroll += clamp(event.relative.x/1000.0*self.rotart_sensativity,-0.5,1.5)
 			update_scroll()
 	pass # Replace with function body.
