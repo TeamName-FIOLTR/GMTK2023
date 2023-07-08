@@ -4,12 +4,21 @@ class_name EntityContainer
 
 signal entity_selected
 
+#returns the number of rolls that we need to supply for the game to run
+func get_desired_rolls()->int:
+	var ret_val : int = 0
+	for c in get_children():
+		if c.requires_input:
+			ret_val += 1
+	return ret_val
+
 #randomizes the intents of all entities under the container
 func set_intents()->void:
 	for c in get_children():
 		if c.has_method("make_intent"):
 			c.make_intent()
 			c.hide_dc()
+			c.roll_display.visible = false
 func _ready():
 	entity_selected.connect(on_entity_select)
 func on_entity_select(en)->void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c51cc5g63vh0p"]
+[gd_scene load_steps=14 format=3 uid="uid://c51cc5g63vh0p"]
 
 [ext_resource type="Script" path="res://scenes/objects/entities/entity.gd" id="1_60q11"]
 [ext_resource type="Script" path="res://resources/entity_stats.gd" id="2_g8lup"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://se674wobxwxs" path="res://scenes/objects/IntentIndecator/intent_indecator.tscn" id="4_2pu1x"]
 [ext_resource type="PackedScene" uid="uid://de6o1od0e4qm" path="res://scenes/objects/HeartDisplay/heart_display.tscn" id="4_t3mc8"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="6_hfgfr"]
+[ext_resource type="PackedScene" uid="uid://bk6hgigiahfey" path="res://scenes/objects/dice_display/dice_display.tscn" id="7_g6hmx"]
 
 [sub_resource type="Resource" id="Resource_memk4"]
 script = ExtResource("2_g8lup")
@@ -54,11 +55,12 @@ _data = {
 "dc": SubResource("Animation_1hjia")
 }
 
-[node name="entity" type="Area2D" node_paths=PackedStringArray("difficultyTextDisplay", "action_display")]
+[node name="entity" type="Area2D" node_paths=PackedStringArray("difficultyTextDisplay", "action_display", "roll_display")]
 script = ExtResource("1_60q11")
 difficultyTextDisplay = NodePath("Difficulty/Control")
 action_display = NodePath("IntentIndecator")
 stats = SubResource("Resource_memk4")
+roll_display = NodePath("D20NumberDisplay")
 
 [node name="art" type="Node2D" parent="."]
 position = Vector2(0, 2)
@@ -80,7 +82,7 @@ scale = Vector2(0.12, 0.12)
 position = Vector2(0, 15)
 
 [node name="Difficulty" type="Node2D" parent="."]
-position = Vector2(12, -31)
+position = Vector2(33, -30)
 scale = Vector2(0.25, 0.25)
 
 [node name="Control" type="Label" parent="Difficulty"]
@@ -91,7 +93,7 @@ offset_bottom = 64.0
 theme = ExtResource("6_hfgfr")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wsn5q")
-text = "v.s. 10"
+text = "10 v.s."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -99,3 +101,7 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_y31kv")
 }
+
+[node name="D20NumberDisplay" parent="." instance=ExtResource("7_g6hmx")]
+position = Vector2(21, -23)
+scale = Vector2(0.0400005, 0.0400005)

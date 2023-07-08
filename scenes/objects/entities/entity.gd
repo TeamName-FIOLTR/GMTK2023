@@ -15,6 +15,8 @@ func hide_dc()->void:
 	print("hiding dc")
 	$AnimationPlayer.play_backwards("dc")
 
+
+@export var requires_input : bool = true
 @export 
 var difficultyTextDisplay : Label
 
@@ -57,8 +59,13 @@ func attempt()->bool:
 @export var check_pass_color : Color = Color.SEA_GREEN
 @export var check_fail_color : Color = Color.INDIAN_RED
 @export var difficulty_str : String = "v.s. %s"
+
+@export var roll_display : DiceDisplay 
+
 func display_difficulty(diff : int)->void:
 	difficultyTextDisplay.text = difficulty_str % str(diff)
+	roll_display.visible = true
+	roll_display.target_value = self.next_roll
 	if self.next_roll >= diff:
 		$Difficulty.modulate = check_pass_color 
 	else:
@@ -127,7 +134,7 @@ func describe_intent()->String:
 func on_mouse_exited():
 	mouse_in = false
 func _input(event):
-	if mouse_in and has_focus and event is InputEventMouseButton and event.is_pressed():
+	if requires_input and mouse_in and has_focus and event is InputEventMouseButton and event.is_pressed():
 		get_parent().entity_selected.emit(self)
 # Called when the node enters the scene tree for the first time.
 func _ready():

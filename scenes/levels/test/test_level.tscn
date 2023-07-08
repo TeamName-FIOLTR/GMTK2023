@@ -46,12 +46,13 @@ grow_vertical = 2
 position = Vector2(0, -2)
 
 [node name="iconSvg" parent="Combat Zone/EntityContainer" instance=ExtResource("2_4uyk5")]
-position = Vector2(141, 169)
+position = Vector2(137, 203)
 scale = Vector2(5.1897, 5.1897)
 
 [node name="slime" parent="Combat Zone/EntityContainer" instance=ExtResource("3_0kioi")]
 position = Vector2(924, 218)
 scale = Vector2(7.8, 7.8)
+requires_input = false
 
 [node name="test level" type="Node2D" parent="."]
 position = Vector2(0, -2)

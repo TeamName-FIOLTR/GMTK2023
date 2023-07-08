@@ -28,10 +28,7 @@ func _ready():
 	pass # Replace with function body.
 
 func on_anim_finished(anim):
-	match anim:
-		"Disapear":
-			$D20NumberDisplay.visible = true 
-			$D20NumberDisplay.target_value = number
+	pass 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

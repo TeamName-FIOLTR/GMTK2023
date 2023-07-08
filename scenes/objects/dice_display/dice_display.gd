@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name DiceDisplay
+
 @export
 var animation_delta : float = 0.2
 @export 
