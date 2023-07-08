@@ -12,7 +12,6 @@ enum Intent {
 }
 
 func hide_dc()->void:
-	print("hiding dc")
 	$AnimationPlayer.play_backwards("dc")
 
 

@@ -58,6 +58,6 @@ func tween_to(target : Vector2,speed : float = 6/60.0,property="position"):
 
 func display_dice():
 	$AnimationPlayer.play("Disapear")
-#func _on_input_area_mouse_exited():
-#	reset_position()
-#	pass # Replace with function body.
+
+func on_play(_decks : RotaryDeck,_entity : Entity)->void:
+	print(_entity.next_target)

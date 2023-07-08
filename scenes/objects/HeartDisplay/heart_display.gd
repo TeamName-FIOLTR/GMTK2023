@@ -34,7 +34,6 @@ func update_heart_values()->void:
 		elif hp_tmp == 1:
 			eat_amount = 1
 		hp_tmp -= eat_amount 
-		print(eat_amount)
 		$transform.get_child(i).frame = eat_amount
 # Called when the node enters the scene tree for the first time.
 #func _ready():

@@ -55,14 +55,24 @@ func evaluate_entities():
 
 func on_entity_selected(entity):
 	if entity.next_roll == -1 and handContainer.selected_card:
+		
+		#clear out the card from the hand
 		var sc = handContainer.selected_card
 		handContainer.ground_card(sc)
-		handContainer.selected_card = null
+		handContainer.selected_card = null 
+
+		#animate the card so it looks purty
 		sc.tween_to(entity.roll_display.global_position,6.0/60,"global_position")
-		entity.next_roll = apply_effects(sc.number)
 		sc.pos_tween.finished.connect(sc.display_dice)
+
+		#get the next roll for the card
+		entity.next_roll = apply_effects(sc.number)
+		sc.on_play(handContainer,entity) #play the card effects
+		
+		#record that we played on an entity
 		entities_with_rolls += 1
-		print(entities_with_rolls)
+	
+		#if we have given every entitied its desired rolls, evaluate the round
 		if entities_with_rolls >= entity_container.get_desired_rolls():
 			evaluate_entities()
 
