@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_memk4"]
 script = ExtResource("2_g8lup")
-hp = 10
+hp = 6
 ac = 10
 attack = 2
 defence = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=11 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
+[ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="10_mdbpk"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
 layout_mode = 3
@@ -90,6 +91,34 @@ position = Vector2(538, 141)
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
+[node name="Card" parent="draw" instance=ExtResource("10_mdbpk")]
+number = 10
+draw_amount = -1
+
+[node name="Card2" parent="draw" instance=ExtResource("10_mdbpk")]
+number = 10
+draw_amount = -1
+intent_target = 1
+
+[node name="Card3" parent="draw" instance=ExtResource("10_mdbpk")]
+number = 10
+draw_amount = -1
+intent_target = 0
+
+[node name="Card4" parent="draw" instance=ExtResource("10_mdbpk")]
+number = 10
+draw_amount = -1
+intent_target = 2
+
+[node name="Card5" parent="draw" instance=ExtResource("10_mdbpk")]
+number = 10
+draw_amount = -1
+intent_target = 3
+
+[node name="Card6" parent="draw" instance=ExtResource("10_mdbpk")]
+number = 10
+draw_amount = -1
+intent_target = 0
+
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)
-scale = Vector2(0.2, 0.2)

@@ -36,7 +36,8 @@ func flip_down()->void:
 		return draw_amount 
 @export var rules_str : String = "Click To \nPlay :D" :
 	set(val):
-		rules_text.text = val 
+		if rules_text:
+			rules_text.text = val 
 		rules_str = val 
 	get:
 		return rules_str 
@@ -56,10 +57,10 @@ func _init(card_number = 100):
 
 
 func update_display()->void:
-	print("updating the display for " + self.name)
 	self.number = number #call the setter getter to ensure that we are synced
 	self.draw_amount = draw_amount 
-	self.rules_str = rules_str
+	if rules_str != "":
+		self.rules_str = rules_str
 	if self.intent_target != Entity.Intent.EMPTY:
 		intent_limit_text.text = "on %s" % Entity.intent2str(self.intent_target)
 		intent_limit_text.visible = true 

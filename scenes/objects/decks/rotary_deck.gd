@@ -18,14 +18,25 @@ func purge_card(c : Card)->void:
 func send_to_discard(c : Card):
 	purge_card(c)
 	discard_deck.cards.append(c)
+	discard_pile.add_child(c)
+	c.scale = Vector2(0.24,0.24)
+	c.position = Vector2(0,0)
+	c.visible = true 
+	c.flip_up()
+	c.update_display()
 	update_cards_on_rotary()
+
+#moves every card from discard into draw
+func reset_library()->void:
+	for c in discard_deck.cards:
+		send_to_draw(c)
 
 func send_to_hand(c):
 	purge_card(c)
 	card_deck.cards.append(c)
 	c.card_box = self 
 	update_cards_on_rotary()
-	c.tree_entered.connect(c.update_display)
+	#c.tree_entered.connect(c.update_display)
 	c.update_display()
 	c.flip_up()
 
@@ -33,14 +44,18 @@ func send_to_hand(c):
 func send_to_draw(c):
 	purge_card(c)
 	draw_deck.cards.append(c)
+	draw_pile.add_child(c)
+
+	c.position = Vector2(0,0)
 	update_cards_on_rotary()
+
+	c.flip_down()
 
 
 
 #remove all used cards
 func clean()->void:
 	for c in $card_timeout.get_children():
-		discard_pile.take_card(c)
 		send_to_discard(c)
 	update_cards_on_rotary()
 
@@ -154,7 +169,9 @@ func _ready():
 	draw_deck = Deck.new()
 
 	for c in draw_pile.get_children():
-		draw_deck.cards.append(c)
+		send_to_draw(c)
+		c.flip_down()
+
 
 	#draw a starting hand of 4 cards
 	draw_card(4)

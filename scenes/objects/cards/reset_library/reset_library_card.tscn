@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://hvh0a8idehdg"]
+[gd_scene load_steps=15 format=3 uid="uid://d4mjm355wj2bk"]
 
-[ext_resource type="Script" path="res://scenes/objects/cards/sugest_card/sug_card.gd" id="1_0cixh"]
+[ext_resource type="Script" path="res://scenes/objects/cards/reset_library/reset_library_card.gd" id="1_bvp8g"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]
@@ -182,7 +182,7 @@ tracks/4/keys = {
 "values": [false, false]
 }
 
-[sub_resource type="Animation" id="Animation_3nklb"]
+[sub_resource type="Animation" id="Animation_1yhph"]
 resource_name = "flip_state"
 length = 0.2
 tracks/0/type = "value"
@@ -251,12 +251,12 @@ _data = {
 "Disapear": SubResource("Animation_jdxv7"),
 "RESET": SubResource("Animation_4w1pg"),
 "flip": SubResource("Animation_ajrbe"),
-"flip_state": SubResource("Animation_3nklb")
+"flip_state": SubResource("Animation_1yhph")
 }
 
 [node name="Card" type="Node2D"]
 position = Vector2(0, -3)
-script = ExtResource("1_0cixh")
+script = ExtResource("1_bvp8g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")

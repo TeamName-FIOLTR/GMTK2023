@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://hvh0a8idehdg"]
+[gd_scene load_steps=15 format=3 uid="uid://bf3wvnl7ea8j5"]
 
-[ext_resource type="Script" path="res://scenes/objects/cards/sugest_card/sug_card.gd" id="1_0cixh"]
+[ext_resource type="Script" path="res://scenes/objects/cards/grow_card/grow_card.gd" id="1_gpbr2"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]
@@ -182,7 +182,7 @@ tracks/4/keys = {
 "values": [false, false]
 }
 
-[sub_resource type="Animation" id="Animation_3nklb"]
+[sub_resource type="Animation" id="Animation_cfnck"]
 resource_name = "flip_state"
 length = 0.2
 tracks/0/type = "value"
@@ -240,10 +240,10 @@ tracks/4/path = NodePath("D20NumberDisplay:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, false]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iga7f"]
@@ -251,12 +251,13 @@ _data = {
 "Disapear": SubResource("Animation_jdxv7"),
 "RESET": SubResource("Animation_4w1pg"),
 "flip": SubResource("Animation_ajrbe"),
-"flip_state": SubResource("Animation_3nklb")
+"flip_state": SubResource("Animation_cfnck")
 }
 
 [node name="Card" type="Node2D"]
-position = Vector2(0, -3)
-script = ExtResource("1_0cixh")
+position = Vector2(0, -5)
+script = ExtResource("1_gpbr2")
+rules_str = ""
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_10lxe")
@@ -297,9 +298,11 @@ offset_right = 362.0
 offset_bottom = 348.0
 theme = ExtResource("4_y86fy")
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.101961, 1)
+theme_override_font_sizes/font_size = 110
 theme_override_styles/normal = SubResource("StyleBoxFlat_y4skw")
-text = "Click To 
-Play :D"
+text = "onplay,forever 
+power+1 
+"
 horizontal_alignment = 1
 
 [node name="InputArea" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("card")]
