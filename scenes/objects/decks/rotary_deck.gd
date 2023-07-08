@@ -5,10 +5,33 @@ class_name RotaryDeck
 @export var discard_pile : CardPile 
 @export var draw_pile : CardPile
 
+
+func purge_card(c : Card)->void:
+	card_deck.remove(c)
+	draw_deck.remove(c)
+	discard_deck.remove(c)
+
+#send the card to the discard pile
+func send_to_discard(c : Card):
+	purge_card(c)
+	discard_deck.cards.append(c)
+	update_cards_on_rotary()
+func send_to_hand(c):
+	purge_card(c)
+	card_deck.cards.append(c)
+	update_cards_on_rotary()
+func send_to_draw(c):
+	purge_card(c)
+	draw_deck.cards.append(c)
+	update_cards_on_rotary()
+
+
+
 #remove all used cards
 func clean()->void:
 	for c in $card_timeout.get_children():
 		discard_pile.take_card(c)
+		send_to_discard(c)
 	update_cards_on_rotary()
 
 @export var focused_card_position : Node2D
@@ -60,6 +83,11 @@ var selected_card : Card :
 
 @export var card_deck : Deck
 
+var draw_deck : Deck 
+var discard_deck : Deck
+
+
+
 @export var scroll : float = 0
 
 @export var card_scale : float = 1.0
@@ -82,14 +110,11 @@ func ground_card(card : Card)->void:
 	pass
 	
 func update_rotary_path():
-#	print("urmum")
-#	print(rotary_path)
 	if not is_inside_tree(): return
 	if rotary_path == null:
 		print("ugh i love godot")
 		print(rotary_path)
 		return
-#	print("so that works")
 	var curve = rotary_path.curve
 	curve.clear_points()
 	curve.add_point(Vector2(-rotary_width,rotary_height),Vector2.ZERO,edge_handles)
@@ -98,14 +123,30 @@ func update_rotary_path():
 	pass
 
 #removes all cards that are played
-func discard():
+func discard(card : Card):
 	pass
+
+func draw()->void:
+	send_to_hand(draw_deck.cards[0])
 
 func _ready():
 	update_rotary_path()
+	
 	card_deck = Deck.new()
+	discard_deck = Deck.new()
+	draw_deck = Deck.new()
+
+
+
 	var card : PackedScene= load("res://scenes/objects/cards/card.tscn")
 	card_deck.cards.append_array([card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate(),
+			  card.instantiate()])
+	
+	draw_deck.cards.append_array([card.instantiate(),
 			  card.instantiate(),
 			  card.instantiate(),
 			  card.instantiate(),

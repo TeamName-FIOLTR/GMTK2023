@@ -2,7 +2,6 @@ extends Node2D
 
 class_name CardPile 
 
-var deck : Deck
 
 @export var card_scale : Node2D
 
@@ -23,8 +22,5 @@ func take_card(card : Card):
 
 func on_card_arrived(card):
 	print(card.name + " has arrived")
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	deck = Deck.new()
 
 
