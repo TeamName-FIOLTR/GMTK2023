@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs1d877ae0hgj"]
+[gd_scene load_steps=11 format=3 uid="uid://bs1d877ae0hgj"]
 
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_3kqt7"]
 [ext_resource type="Script" path="res://scenes/objects/UI/btnExit.gd" id="2_2gwar"]
+[ext_resource type="Script" path="res://scenes/menus/game_over/game_over.gd" id="2_4lkcw"]
 [ext_resource type="Texture2D" uid="uid://bykodsh3krxht" path="res://assets/textures/animations/knight/attack.png0010.png" id="2_17lyg"]
 [ext_resource type="Script" path="res://scenes/objects/UI/btnPlay.gd" id="2_cw8fh"]
 [ext_resource type="Texture2D" uid="uid://40ndlo514fe0" path="res://assets/textures/d20.png" id="3_0qn12"]
 [ext_resource type="Texture2D" uid="uid://fx0p5twqu5ua" path="res://assets/slime/slime.png" id="4_ffxoo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mcqa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tte6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -22,6 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3kqt7")
+script = ExtResource("2_4lkcw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -39,6 +43,22 @@ anchor_right = 1.0
 offset_bottom = 128.0
 text = "Game Over"
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.197
+anchor_right = 0.8
+anchor_bottom = 0.383
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5mcqa")
+text = "You Killed The Slime"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

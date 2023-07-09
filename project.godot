@@ -15,6 +15,10 @@ run/main_scene="res://scenes/levels/test/test_level.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scenes/singletons/Globals/globals.tscn"
+
 [input]
 
 developer_debug={

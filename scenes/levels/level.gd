@@ -13,13 +13,15 @@ var scene_text : String = ""
 var entities_with_rolls : int = 0
 
 
-func game_over()->void:
+func game_over(message : String,seduced : bool)->void:
+	Globals.game_over_message = message 
+	Globals.seduced = seduced
 	get_tree().change_scene_to_file("res://scenes/menus/game_over/game_over.tscn")
+
+
 #runs all the code necessary for updating the scene
 #for the next stage of the game
 func update_scene()->void:
-	if len(handContainer.card_deck.cards) == 0:
-		game_over()
 		
 	turn_indicator.visible = false
 	handContainer.clean()	
@@ -28,6 +30,8 @@ func update_scene()->void:
 	talkBox.clear_text()
 	talkBox.target_text = scene_text
 	entities_with_rolls = 0
+	if len(handContainer.card_deck.cards) == 0:
+		game_over("you ran out of cards!",false)
 
 #array of functional effects to apply to cards
 var round_effects  = []
@@ -86,11 +90,17 @@ func on_entity_selected(entity):
 		if entities_with_rolls >= entity_container.get_desired_rolls():
 			evaluate_entities()
 
+func on_entity_die(_entity):
+	if _entity.name == "knight":
+		game_over("the slime killed the knight!",false)
+	else:
+		game_over("the knight killed the slime!",false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	entity_container.entity_selected.connect(on_entity_selected)
-
+	for c in entity_container.get_children():
+		c.die.connect(on_entity_die)
 	update_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

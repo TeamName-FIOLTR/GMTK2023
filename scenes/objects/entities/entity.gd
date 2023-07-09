@@ -3,6 +3,7 @@ extends Area2D
 class_name Entity
 
 signal intent_set
+signal die 
 
 enum Intent {
 	ATTACK,
@@ -78,6 +79,8 @@ func ensure_roll()->void:
 #inteanded for use in the damage step
 func apply_damage()->void:
 	stats.hp -= compute_damage_taken()
+	if stats.hp <= 0:
+		die.emit(self)	#tell whoever is interested in that we died
 	health_display.current_health = stats.hp
 	health_display.update_heart_values()
 	
