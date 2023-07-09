@@ -40,9 +40,9 @@ var has_focus : bool = false
 @export var highlight : bool = false:
 	set(n_highlight):
 		highlight = n_highlight
-		print(self)
-		print(sprite)
-		print(highlight)
+		#print(self)
+		#print(sprite)
+		#print(highlight)
 		if sprite:
 			sprite.material.set_shader_parameter("highlight", highlight)
 #represents the roll that will be used in the next

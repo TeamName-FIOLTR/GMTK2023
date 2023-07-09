@@ -86,7 +86,7 @@ func _on_input_area_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if card_box:
 			card_box.selected_card = self
-#		print("/")
+#		#print("/")
 #		if abs(event.relative.x)<abs(event.relative.y):
 #			if pos_tween:
 #				pos_tween.kill()
@@ -110,10 +110,10 @@ func display_dice():
 #called only if we match intents
 func play_effect(_decks : RotaryDeck,_entity : Entity)->void:
 	if draw_amount > 0:
-		print("drawing card! " +str(number) )
+		#print("drawing card! " +str(number) )
 		_decks.draw_card(draw_amount)
 	elif draw_amount < 0:
-		print("discarding card!"+ str(number))
+		#print("discarding card!"+ str(number))
 		_decks.discard_random(abs(draw_amount))
 	pass
 

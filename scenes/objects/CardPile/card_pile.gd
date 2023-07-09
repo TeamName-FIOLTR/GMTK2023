@@ -15,4 +15,5 @@ func take_card(card : Card):
 
 
 func on_card_arrived(card):
-	print(card.name + " has arrived")
+	pass
+	#print(card.name + " has arrived")

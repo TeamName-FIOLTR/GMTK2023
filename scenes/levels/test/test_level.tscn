@@ -50,8 +50,11 @@ discard_pile = NodePath("../discard")
 draw_pile = NodePath("../draw")
 focused_card_position = NodePath("../focus_card_position")
 rotary_width = 400.0
+rotary_height = null
+edge_handles = null
 center_handle = Vector2(-300, 0)
 rotart_sensativity = 3.0
+scroll = null
 card_scale = 0.2
 
 [node name="Combat Zone" type="Control" parent="."]
@@ -129,7 +132,6 @@ position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
 [node name="Card19" parent="draw" instance=ExtResource("14_17b2y")]
-scale = Vector2(1, 1)
 suggestion_intent = 3
 increase_amount = 10
 number = 5
