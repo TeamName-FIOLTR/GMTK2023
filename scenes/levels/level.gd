@@ -22,7 +22,6 @@ func game_over(message : String,seduced : bool)->void:
 #runs all the code necessary for updating the scene
 #for the next stage of the game
 func update_scene()->void:
-		
 	turn_indicator.visible = false
 	handContainer.clean()	
 	entity_container.set_intents()
@@ -96,11 +95,15 @@ func on_entity_die(_entity):
 	else:
 		game_over("the knight killed the slime!",false)
 
+func on_entity_seduce(who,whom)->void:
+	game_over("%s seduced %s!" %[who.name,whom.name],true)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	entity_container.entity_selected.connect(on_entity_selected)
 	for c in entity_container.get_children():
 		c.die.connect(on_entity_die)
+		c.seduce.connect(on_entity_seduce)
 	update_scene()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

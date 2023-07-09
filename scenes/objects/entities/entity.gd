@@ -4,6 +4,7 @@ class_name Entity
 
 signal intent_set
 signal die 
+signal seduce
 
 enum Intent {
 	ATTACK,
@@ -90,6 +91,8 @@ func handle_success()->void:
 			next_target.damage(stats.attack)
 		Intent.DEFEND:
 			defend(stats.defence) 
+		Intent.SEDUCE:
+			seduce.emit(self,next_target)
 
 
 #tries to perform the given action and

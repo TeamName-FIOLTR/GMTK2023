@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs1d877ae0hgj"]
+[gd_scene load_steps=12 format=3 uid="uid://bs1d877ae0hgj"]
 
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_3kqt7"]
 [ext_resource type="Script" path="res://scenes/objects/UI/btnExit.gd" id="2_2gwar"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/objects/UI/btnPlay.gd" id="2_cw8fh"]
 [ext_resource type="Texture2D" uid="uid://40ndlo514fe0" path="res://assets/textures/d20.png" id="3_0qn12"]
 [ext_resource type="Texture2D" uid="uid://fx0p5twqu5ua" path="res://assets/slime/slime.png" id="4_ffxoo"]
+[ext_resource type="Texture2D" uid="uid://cqxd26y3qgrbq" path="res://assets/textures/blushing_knight.png" id="8_ajgkw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mcqa"]
 
@@ -56,7 +57,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5mcqa")
-text = "You Killed The Slime"
+text = "Thanks for playing"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -81,11 +82,6 @@ layout_mode = 2
 text = "Exit
 "
 script = ExtResource("2_2gwar")
-
-[node name="Attack_png0010" type="Sprite2D" parent="."]
-position = Vector2(174, 299)
-scale = Vector2(0.2475, 0.2475)
-texture = ExtResource("2_17lyg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -178,7 +174,30 @@ position = Vector2(559, 598)
 scale = Vector2(0.120625, 0.120625)
 texture = ExtResource("3_0qn12")
 
-[node name="Slime" type="Sprite2D" parent="."]
+[node name="seduce" type="Node2D" parent="."]
+visible = false
+position = Vector2(26, -30)
+
+[node name="BlushingKnight" type="Sprite2D" parent="seduce"]
+position = Vector2(91, 221)
+rotation = -0.202745
+scale = Vector2(0.240313, 0.240313)
+texture = ExtResource("8_ajgkw")
+
+[node name="Slime2" type="Sprite2D" parent="seduce"]
+modulate = Color(1, 1, 1, 0.803922)
+position = Vector2(173, 269)
+scale = Vector2(0.644417, 0.644417)
+texture = ExtResource("4_ffxoo")
+
+[node name="normal" type="Node2D" parent="."]
+
+[node name="Slime" type="Sprite2D" parent="normal"]
 position = Vector2(952, 304)
 scale = Vector2(0.18925, 0.18925)
 texture = ExtResource("4_ffxoo")
+
+[node name="Attack_png0010" type="Sprite2D" parent="normal"]
+position = Vector2(174, 299)
+scale = Vector2(0.2475, 0.2475)
+texture = ExtResource("2_17lyg")
