@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://caj6ncauubbsw"]
+[gd_scene load_steps=6 format=3 uid="uid://caj6ncauubbsw"]
 
 [ext_resource type="Script" path="res://scenes/objects/UI/talkbox/talkbox.gd" id="1_coih1"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_u7i64"]
 [ext_resource type="AudioStream" uid="uid://b7gdapxm7ix8k" path="res://assets/sounds/message-pop-alert-fast.mp3" id="3_5m1fg"]
+[ext_resource type="FontFile" uid="uid://dd50vh8h61pgr" path="res://assets/fonts/stefiont/Stefiont-Regular.otf" id="3_yh86f"]
+
+[sub_resource type="FontVariation" id="FontVariation_bo2wj"]
+base_font = ExtResource("3_yh86f")
 
 [node name="talkBox" type="Control" node_paths=PackedStringArray("lbltext")]
 layout_mode = 3
@@ -23,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_bo2wj")
 theme_override_font_sizes/mono_font_size = 7
 text = "testing123
 abc"

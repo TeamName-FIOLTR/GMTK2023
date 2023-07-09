@@ -13,9 +13,14 @@ var scene_text : String = ""
 var entities_with_rolls : int = 0
 
 
+func game_over()->void:
+	get_tree().change_scene_to_file("res://scenes/menus/game_over/game_over.tscn")
 #runs all the code necessary for updating the scene
 #for the next stage of the game
 func update_scene()->void:
+	if len(handContainer.card_deck.cards) == 0:
+		game_over()
+		
 	turn_indicator.visible = false
 	handContainer.clean()	
 	entity_container.set_intents()

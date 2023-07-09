@@ -31,10 +31,10 @@ func get_state_text()->String:
 		if c.has_method("describe_intent"):
 			ret_val += c.describe_intent() + "\n" 
 	
-	var filler : Array[String] = ["_"]
+	var filler : Array[String] = ["?"]
 	filler.resize(get_child_count())
 	for i in range(len(filler)):
-		filler[i] = "_"
+		filler[i] = "?"
 
 	return ret_val % filler
 
