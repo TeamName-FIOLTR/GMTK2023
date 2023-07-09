@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=14 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_3o3lx"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
 [ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_mdbpk"]
 [ext_resource type="PackedScene" uid="uid://diw6f6j8drtyc" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="12_d4bc0"]
+[ext_resource type="AudioStream" uid="uid://ddegupaqamwpu" path="res://assets/music/fruit cookie.wav" id="13_d1rrn"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer", "turn_indicator")]
 layout_mode = 3
@@ -131,26 +132,26 @@ draw_amount = 1
 
 [node name="Card2" parent="draw" instance=ExtResource("12_d4bc0")]
 number = 18
-draw_amount = -1
+draw_amount = 3
 
 [node name="Card3" parent="draw" instance=ExtResource("12_d4bc0")]
 number = 18
-draw_amount = -1
+draw_amount = 3
 
 [node name="Card4" parent="draw" instance=ExtResource("12_d4bc0")]
 number = 18
-draw_amount = -1
+draw_amount = 3
 
 [node name="Card5" parent="draw" instance=ExtResource("12_d4bc0")]
 number = 18
-draw_amount = -1
-
-[node name="Card6" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 18
-draw_amount = -1
+draw_amount = 3
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_d1rrn")
+autoplay = true
 
 [connection signal="card_deselected" from="Rotary Deck" to="." method="_on_rotary_deck_card_deselected"]
 [connection signal="card_selected" from="Rotary Deck" to="." method="_on_rotary_deck_card_selected"]

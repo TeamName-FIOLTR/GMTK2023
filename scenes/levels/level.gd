@@ -13,9 +13,10 @@ var scene_text : String = ""
 var entities_with_rolls : int = 0
 
 
-func game_over(message : String,seduced : bool)->void:
+func game_over(message : String,seduced : bool,win : bool)->void:
 	Globals.game_over_message = message 
 	Globals.seduced = seduced
+	Globals.u_win = win
 	get_tree().change_scene_to_file("res://scenes/menus/game_over/game_over.tscn")
 
 
@@ -30,7 +31,7 @@ func update_scene()->void:
 	talkBox.target_text = scene_text %["?","?"]
 	entities_with_rolls = 0
 	if len(handContainer.card_deck.cards) == 0:
-		game_over("you ran out of cards!",false)
+		game_over("you ran out of cards!",false, false)
 
 #array of functional effects to apply to cards
 var round_effects  = []
@@ -98,12 +99,12 @@ func on_entity_selected(entity):
 
 func on_entity_die(_entity):
 	if _entity.name == "knight":
-		game_over("the slime killed the knight!",false)
+		game_over("the slime killed the knight!",false, false)
 	else:
-		game_over("the knight killed the slime!",false)
+		game_over("the knight killed the slime!",false, true)
 
 func on_entity_seduce(who,whom)->void:
-	game_over("%s seduced %s!" %[who.name,whom.name],true)
+	game_over("%s seduced %s!" %[who.name,whom.name],true, true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
