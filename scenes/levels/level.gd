@@ -72,7 +72,7 @@ func evaluate_entities():
 	turn_indicator.visible = true
 
 func on_entity_selected(entity):
-	if entity.next_roll == -1 and handContainer.selected_card:
+	if entity.next_roll == -1 and handContainer.selected_card and not turn_indicator.visible:
 		
 		#clear out the card from the hand
 		var sc = handContainer.selected_card

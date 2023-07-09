@@ -300,7 +300,7 @@ theme = ExtResource("4_y86fy")
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.101961, 1)
 theme_override_font_sizes/font_size = 110
 theme_override_styles/normal = SubResource("StyleBoxFlat_y4skw")
-text = "onplay,forever 
+text = "card 
 power+1 
 "
 horizontal_alignment = 1
