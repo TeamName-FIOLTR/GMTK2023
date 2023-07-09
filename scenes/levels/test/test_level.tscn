@@ -135,7 +135,7 @@ scale = Vector2(0.2, 0.2)
 suggestion_intent = 3
 increase_amount = 10
 number = 5
-draw_amount = -1
+draw_amount = 5
 
 [node name="Card" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 10
