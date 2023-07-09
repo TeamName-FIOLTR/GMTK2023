@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf3wvnl7ea8j5"]
+[gd_scene load_steps=15 format=3 uid="uid://diw6f6j8drtyc"]
 
-[ext_resource type="Script" path="res://scenes/objects/cards/grow_card/grow_card.gd" id="1_gpbr2"]
+[ext_resource type="Script" path="res://scenes/objects/cards/grow_card/big_card.gd" id="1_gpbr2"]
 [ext_resource type="Texture2D" uid="uid://cru5edd3wribw" path="res://assets/textures/cards/card_base.png" id="2_10lxe"]
 [ext_resource type="Script" path="res://scenes/objects/cards/InputArea.gd" id="3_bsyqd"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="4_y86fy"]

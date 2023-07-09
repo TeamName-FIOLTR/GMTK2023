@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
 [ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_mdbpk"]
-[ext_resource type="PackedScene" uid="uid://hvh0a8idehdg" path="res://scenes/objects/cards/sugest_card/sug_card.tscn" id="13_rl35p"]
+[ext_resource type="PackedScene" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="12_d4bc0"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer", "turn_indicator")]
 layout_mode = 3
@@ -125,135 +125,13 @@ position = Vector2(538, 141)
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
-[node name="Card32" parent="draw" instance=ExtResource("13_rl35p")]
-suggestion_intent = 3
-increase_amount = 100
-number = 1
-draw_amount = 1
-
 [node name="Card" parent="draw" instance=ExtResource("10_mdbpk")]
 number = 20
 draw_amount = 1
 
-[node name="Card2" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card3" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card4" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card5" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card6" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card7" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card8" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card9" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card10" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card11" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card12" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card13" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card14" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card15" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card16" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card17" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card18" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card19" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card20" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card21" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card22" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card23" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card24" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card25" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card26" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card27" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card28" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card29" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card30" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
-
-[node name="Card31" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 20
-draw_amount = 1
+[node name="Card2" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 18
+draw_amount = -1
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)

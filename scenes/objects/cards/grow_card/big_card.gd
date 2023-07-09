@@ -1,6 +1,6 @@
 extends Card
 
-class_name GrowCard
+class_name BigCard
 
 
 
