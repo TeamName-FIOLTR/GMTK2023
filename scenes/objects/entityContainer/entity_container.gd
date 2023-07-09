@@ -31,12 +31,7 @@ func get_state_text()->String:
 		if c.has_method("describe_intent"):
 			ret_val += c.describe_intent() + "\n" 
 	
-	var filler : Array[String] = ["?"]
-	filler.resize(get_child_count())
-	for i in range(len(filler)):
-		filler[i] = "?"
-
-	return ret_val % filler
+	return ret_val 
 
 #represents the entity that this container has selected
 var selected_entity : Entity = null :
@@ -61,6 +56,12 @@ func highlight_entities(yes : bool):
 func sigmoid(x : float)->float:
 	var v = exp(x)
 	return v / (v+1)
+
+func get_next_rolls()->Array:
+	var ret_val = []
+	for e in get_children():
+		ret_val.append(e.next_roll)
+	return ret_val
 
 func _input(event)->void:
 	var dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")

@@ -27,7 +27,7 @@ func update_scene()->void:
 	entity_container.set_intents()
 	scene_text = entity_container.get_state_text()
 	talkBox.clear_text()
-	talkBox.target_text = scene_text
+	talkBox.target_text = scene_text %["?","?"]
 	entities_with_rolls = 0
 	if len(handContainer.card_deck.cards) == 0:
 		game_over("you ran out of cards!",false)
@@ -47,11 +47,16 @@ func apply_effects(x : int)->int:
 
 #this is the roll checking phase
 func check_rolls()->void:
+	var rolls = []
 	for e in entity_container.get_children():
 		if e.has_method("attempt"):
 			e.ensure_roll() #make sure that we rolled SOMETHING, for the AI entities
+			rolls.append(e.next_roll)
 			e.attempt()
 			e.next_roll = -1
+
+
+	talkBox.get_node("RichTextLabel").text = scene_text % rolls
 	
 #this is the roll checking phase
 func apply_damage()->void:
@@ -84,7 +89,9 @@ func on_entity_selected(entity):
 		
 		#record that we played on an entity
 		entities_with_rolls += 1
-	
+
+
+
 		#if we have given every entitied its desired rolls, evaluate the round
 		if entities_with_rolls >= entity_container.get_desired_rolls():
 			evaluate_entities()
