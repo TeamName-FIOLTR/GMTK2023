@@ -1,31 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://se674wobxwxs"]
+[gd_scene load_steps=6 format=3 uid="uid://se674wobxwxs"]
 
 [ext_resource type="Script" path="res://scenes/objects/IntentIndecator/intent_indecator.gd" id="1_cul8c"]
-[ext_resource type="Texture2D" uid="uid://ddi7ws1vlps2x" path="res://icon.svg" id="2_2v0n2"]
+[ext_resource type="Texture2D" uid="uid://c77sahkfcm2q4" path="res://assets/textures/intents/attack.png" id="3_15ygo"]
+[ext_resource type="Texture2D" uid="uid://c5ykxoxhtsolg" path="res://assets/textures/intents/sheild.png" id="4_b4orc"]
+[ext_resource type="Texture2D" uid="uid://dh587r5hg8w6c" path="res://assets/textures/intents/brain.png" id="5_g50ja"]
+[ext_resource type="Texture2D" uid="uid://d2rmw011hlyhu" path="res://assets/textures/intents/heart.png" id="6_28vma"]
 
 [node name="IntentIndecator" type="Node2D"]
 script = ExtResource("1_cul8c")
 rotation_time = 0.1
 total_anim_time = 1.0
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(6, 7)
-texture = ExtResource("2_2v0n2")
+[node name="Attack" type="Sprite2D" parent="."]
+position = Vector2(-1, -9)
+texture = ExtResource("3_15ygo")
 
-[node name="Icon2" type="Sprite2D" parent="."]
+[node name="Sheild" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(1, 0, 0, 1)
-position = Vector2(6, 7)
-texture = ExtResource("2_2v0n2")
+position = Vector2(8, 20)
+texture = ExtResource("4_b4orc")
 
-[node name="Icon3" type="Sprite2D" parent="."]
+[node name="Brain" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.313726, 0.490196, 1, 1)
-position = Vector2(6, 7)
-texture = ExtResource("2_2v0n2")
+position = Vector2(-9, -29)
+texture = ExtResource("5_g50ja")
 
-[node name="Icon4" type="Sprite2D" parent="."]
+[node name="Heart" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.313726, 0.490196, 1, 1)
-position = Vector2(6, 7)
-texture = ExtResource("2_2v0n2")
+position = Vector2(26, 10)
+texture = ExtResource("6_28vma")

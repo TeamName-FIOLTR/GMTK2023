@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
-[ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="10_mdbpk"]
+[ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_mdbpk"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
 layout_mode = 3
