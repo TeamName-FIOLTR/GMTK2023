@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk6hgigiahfey"]
+[gd_scene load_steps=5 format=3 uid="uid://bk6hgigiahfey"]
 
 [ext_resource type="Script" path="res://scenes/objects/dice_display/dice_display.gd" id="1_ma0s4"]
 [ext_resource type="Texture2D" uid="uid://40ndlo514fe0" path="res://assets/textures/d20.png" id="2_kh2h0"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="3_m4cgg"]
+[ext_resource type="AudioStream" uid="uid://o3oj5whrypff" path="res://assets/sounds/dice_roll.wav" id="4_5kdsi"]
 
 [node name="D20NumberDisplay" type="Node2D"]
 position = Vector2(0, -3)
@@ -27,3 +28,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5kdsi")
+volume_db = -3.0

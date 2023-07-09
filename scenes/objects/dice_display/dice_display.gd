@@ -13,6 +13,7 @@ var target_value : int = -1  :
 		offset = 0
 		cumulative_time = 0
 		target_value = val 
+		$AudioStreamPlayer.play()
 	get:
 		return target_value
 		

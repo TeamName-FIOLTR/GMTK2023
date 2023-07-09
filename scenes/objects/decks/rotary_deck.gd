@@ -10,7 +10,6 @@ func purge_card(c : Card)->void:
 	card_deck.remove(c)
 	draw_deck.remove(c)
 	discard_deck.remove(c)
-	c.card_box = null
 	if c.get_parent():
 		c.get_parent().remove_child(c)
 
@@ -24,6 +23,7 @@ func send_to_discard(c : Card):
 	c.visible = true 
 	c.flip_up()
 	c.update_display()
+	c.card_box = null
 	update_cards_on_rotary()
 
 #moves every card from discard into draw
