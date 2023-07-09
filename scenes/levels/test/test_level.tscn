@@ -145,3 +145,6 @@ draw_amount = 0
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)
+
+[connection signal="card_deselected" from="Rotary Deck" to="." method="_on_rotary_deck_card_deselected"]
+[connection signal="card_selected" from="Rotary Deck" to="." method="_on_rotary_deck_card_selected"]

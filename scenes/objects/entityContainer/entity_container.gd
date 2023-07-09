@@ -52,6 +52,12 @@ var selected_entity : Entity = null :
 func set_focused_entity(e : Entity):
 	selected_entity = e
 
+func highlight_entities(yes : bool):
+	for c in get_children():
+		if c is Entity:
+			print("yeah entity fr")
+			c.highlight = yes
+
 func sigmoid(x : float)->float:
 	var v = exp(x)
 	return v / (v+1)
