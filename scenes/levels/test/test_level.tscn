@@ -65,12 +65,14 @@ position = Vector2(0, -1)
 position = Vector2(137, 196)
 scale = Vector2(5.1897, 5.1897)
 check_pass_color = Color(0.0235294, 0.137255, 0.0705882, 1)
+check_fail_color = Color(0.313726, 0.105882, 0.109804, 1)
 
 [node name="slime" parent="Combat Zone/EntityContainer" instance=ExtResource("3_0kioi")]
 position = Vector2(927, 197)
 scale = Vector2(7.8, 7.8)
 requires_input = false
 check_pass_color = Color(0.0235294, 0.137255, 0.0705882, 1)
+check_fail_color = Color(0.313726, 0.105882, 0.109804, 1)
 
 [node name="TurnHelperText" type="Label" parent="Combat Zone"]
 visible = false
