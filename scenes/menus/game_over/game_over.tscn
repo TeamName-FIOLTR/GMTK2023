@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs1d877ae0hgj"]
+[gd_scene load_steps=15 format=3 uid="uid://bs1d877ae0hgj"]
 
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_3kqt7"]
 [ext_resource type="Script" path="res://scenes/objects/UI/btnExit.gd" id="2_2gwar"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://40ndlo514fe0" path="res://assets/textures/d20.png" id="3_0qn12"]
 [ext_resource type="Texture2D" uid="uid://fx0p5twqu5ua" path="res://assets/slime/slime.png" id="4_ffxoo"]
 [ext_resource type="Texture2D" uid="uid://cqxd26y3qgrbq" path="res://assets/textures/blushing_knight.png" id="8_ajgkw"]
+[ext_resource type="AudioStream" uid="uid://bvga1pk2fnnga" path="res://assets/music/fruitcookielove.wav" id="9_jo7vl"]
+[ext_resource type="AudioStream" uid="uid://hkkbpwmaufx7" path="res://assets/music/victory.wav" id="10_fsgo5"]
+[ext_resource type="AudioStream" uid="uid://g2t0mhvpfuyp" path="res://assets/music/defeat.wav" id="11_wob66"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5mcqa"]
 
@@ -104,7 +107,7 @@ text = "Programing"
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rk33u")
-text = "Xgit3000"
+text = "X3K"
 
 [node name="Label3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -201,3 +204,12 @@ texture = ExtResource("4_ffxoo")
 position = Vector2(174, 299)
 scale = Vector2(0.2475, 0.2475)
 texture = ExtResource("2_17lyg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_jo7vl")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fsgo5")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wob66")
