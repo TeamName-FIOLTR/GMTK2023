@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
 [ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_mdbpk"]
-[ext_resource type="PackedScene" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="12_d4bc0"]
+[ext_resource type="PackedScene" uid="uid://diw6f6j8drtyc" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="12_d4bc0"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer", "turn_indicator")]
 layout_mode = 3
@@ -130,6 +130,22 @@ number = 20
 draw_amount = 1
 
 [node name="Card2" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 18
+draw_amount = -1
+
+[node name="Card3" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 18
+draw_amount = -1
+
+[node name="Card4" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 18
+draw_amount = -1
+
+[node name="Card5" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 18
+draw_amount = -1
+
+[node name="Card6" parent="draw" instance=ExtResource("12_d4bc0")]
 number = 18
 draw_amount = -1
 

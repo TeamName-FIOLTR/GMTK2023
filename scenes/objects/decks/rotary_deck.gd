@@ -10,7 +10,7 @@ func purge_card(c : Card)->void:
 	card_deck.remove(c)
 	draw_deck.remove(c)
 	discard_deck.remove(c)
-
+	c.card_box = null
 	if c.get_parent():
 		c.get_parent().remove_child(c)
 
@@ -185,9 +185,6 @@ func _ready():
 
 	#draw a starting hand of 4 cards
 	draw_card(4)
-
-	for c in card_deck.cards:
-		c.card_box = self
 	
 	update_cards_on_rotary()
 

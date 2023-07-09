@@ -84,7 +84,8 @@ func _process(delta):
 
 func _on_input_area_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseButton and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		card_box.selected_card = self
+		if card_box:
+			card_box.selected_card = self
 #		print("/")
 #		if abs(event.relative.x)<abs(event.relative.y):
 #			if pos_tween:
