@@ -133,7 +133,14 @@ scale = Vector2(1, 1)
 suggestion_intent = 3
 increase_amount = 10
 number = 5
-draw_amount = -1
+draw_amount = 5
+
+[node name="Card22" parent="draw" instance=ExtResource("14_17b2y")]
+scale = Vector2(1, 1)
+suggestion_intent = 3
+increase_amount = 10
+number = 5
+draw_amount = 5
 
 [node name="Card" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 10
@@ -146,7 +153,7 @@ intent_target = 2
 
 [node name="Card2" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 8
-draw_amount = 0
+draw_amount = 1
 
 [node name="Card3" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 7
@@ -163,7 +170,7 @@ intent_target = 0
 
 [node name="Card7" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 1
-draw_amount = 3
+draw_amount = 4
 intent_target = 1
 
 [node name="Card8" parent="draw" instance=ExtResource("11_3y0mu")]
@@ -176,12 +183,12 @@ draw_amount = -1
 
 [node name="Card10" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 7
-draw_amount = 2
+draw_amount = 3
 intent_target = 1
 
 [node name="Card11" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 1
-draw_amount = 2
+draw_amount = 3
 
 [node name="Card12" parent="draw" instance=ExtResource("12_ifhjt")]
 number = 1
@@ -199,19 +206,27 @@ intent_target = 2
 
 [node name="Card14" parent="draw" instance=ExtResource("12_ifhjt")]
 number = 1
-draw_amount = 2
+draw_amount = 3
 
 [node name="Card16" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 18
+number = 19
 draw_amount = -3
 
 [node name="Card17" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 18
+number = 19
+draw_amount = -3
+
+[node name="Card20" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 19
+draw_amount = -3
+
+[node name="Card21" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 19
 draw_amount = -3
 
 [node name="Card18" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 1
-draw_amount = 2
+number = 19
+draw_amount = -3
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)
