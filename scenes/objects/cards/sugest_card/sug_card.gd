@@ -14,7 +14,7 @@ func play_effect(_decks : RotaryDeck,_entity : Entity):
 	super.play_effect(_decks,_entity)
 
 func update_display():
-	print("updating display for " + str(name))
+	#print("updating display for " + str(name))
 	super.update_display()
 	#make sure the rules text matches the cards type
 	rules_text.text = "suggest\n" +\

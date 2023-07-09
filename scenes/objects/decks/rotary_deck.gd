@@ -145,7 +145,7 @@ func ground_card(card : Card)->void:
 func update_rotary_path():
 	if not is_inside_tree(): return
 	if rotary_path == null:
-		print(rotary_path)
+		#print(rotary_path)
 		return
 	var curve = rotary_path.curve
 	curve.clear_points()
@@ -220,7 +220,7 @@ func update_scroll():
 
 func _on_click_area_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-#		print("/")
+#		#print("/")
 		if abs(event.relative.x)>abs(event.relative.y):
 			scroll += clamp(event.relative.x/1000.0*self.rotart_sensativity,-0.5,1.5)
 			update_scroll()

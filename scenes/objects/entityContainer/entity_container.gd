@@ -23,7 +23,7 @@ func set_intents()->void:
 func _ready():
 	entity_selected.connect(on_entity_select)
 func on_entity_select(en)->void:
-	#print(en.name)
+	##print(en.name)
 	pass
 func get_state_text()->String:
 	var ret_val : String = ""
@@ -50,7 +50,7 @@ func set_focused_entity(e : Entity):
 func highlight_entities(yes : bool):
 	for c in get_children():
 		if c is Entity:
-			print("yeah entity fr")
+			#print("yeah entity fr")
 			c.highlight = yes
 
 func sigmoid(x : float)->float:
