@@ -195,6 +195,8 @@ func _input(event):
 		get_parent().entity_selected.emit(self)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if $art/Icon is AnimatedSprite2D:
+		$art/Icon.play("default")
 	health_display.max_health = stats.hp 
 	health_display.current_health = stats.hp 
 

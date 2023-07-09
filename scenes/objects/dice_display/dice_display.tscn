@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk6hgigiahfey"]
 
-[ext_resource type="Texture2D" uid="uid://bcma43soc0sxb" path="res://assets/textures/crapy_d20.jpeg" id="1_8nemj"]
 [ext_resource type="Script" path="res://scenes/objects/dice_display/dice_display.gd" id="1_ma0s4"]
+[ext_resource type="Texture2D" uid="uid://40ndlo514fe0" path="res://assets/textures/d20.png" id="2_kh2h0"]
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="3_m4cgg"]
 
 [node name="D20NumberDisplay" type="Node2D"]
@@ -12,10 +12,10 @@ animation_length = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="CrapyD20" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(-5, 8)
-texture = ExtResource("1_8nemj")
+[node name="D20" type="Sprite2D" parent="."]
+position = Vector2(2, 25)
+scale = Vector2(0.78375, 0.78375)
+texture = ExtResource("2_kh2h0")
 
 [node name="lblRoll" type="Label" parent="."]
 offset_left = -83.0
@@ -23,6 +23,7 @@ offset_top = -52.0
 offset_right = 90.0
 offset_bottom = 76.0
 theme = ExtResource("3_m4cgg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
