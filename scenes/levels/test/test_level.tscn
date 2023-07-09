@@ -121,39 +121,25 @@ position = Vector2(538, 141)
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
-[node name="Card7" parent="draw" instance=ExtResource("11_comdw")]
-scale = Vector2(1, 1)
-number = 1
-draw_amount = 0
-
 [node name="Card" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 10
-draw_amount = -1
-
-[node name="Card2" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 10
-draw_amount = -1
-intent_target = 1
+number = 5
+draw_amount = 2
 
 [node name="Card3" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 10
-draw_amount = -1
-intent_target = 0
+number = 8
+draw_amount = 1
 
 [node name="Card4" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 10
+number = 13
 draw_amount = -1
-intent_target = 2
 
 [node name="Card5" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 10
-draw_amount = -1
-intent_target = 3
+number = 18
+draw_amount = -2
 
-[node name="Card6" parent="draw" instance=ExtResource("10_mdbpk")]
-number = 10
-draw_amount = -1
-intent_target = 0
+[node name="Card2" parent="draw" instance=ExtResource("11_comdw")]
+number = 1
+draw_amount = 0
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)

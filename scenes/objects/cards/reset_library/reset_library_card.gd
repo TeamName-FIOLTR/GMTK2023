@@ -2,11 +2,7 @@ extends Card
 
 class_name ResetLibraryCard
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func play_effect(_decks : RotaryDeck,_entity : Entity)->void:
+	super.play_effect(_decks ,_entity)
+	_decks.reset_library()

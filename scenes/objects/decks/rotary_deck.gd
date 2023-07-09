@@ -30,6 +30,8 @@ func send_to_discard(c : Card):
 func reset_library()->void:
 	for c in discard_deck.cards:
 		send_to_draw(c)
+	for c in discard_pile.get_children():
+		send_to_draw(c)
 
 func send_to_hand(c):
 	purge_card(c)
@@ -47,6 +49,7 @@ func send_to_draw(c):
 	draw_pile.add_child(c)
 
 	c.position = Vector2(0,0)
+	c.scale = Vector2(1,1)
 	update_cards_on_rotary()
 
 	c.flip_down()
