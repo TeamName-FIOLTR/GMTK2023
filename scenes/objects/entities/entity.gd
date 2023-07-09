@@ -32,10 +32,19 @@ var stats : EntityStats
 
 #adjectives for randomly describing our actions
 @export
-var adjectives : Array[String] = ["angrily","visciously","excitedly","slowly","sadly","agressivly"]
+var adjectives : Array[String] = ["angrily","visciously","excitedly","slowly","sadly","agressivly","indubitably","unorthadoxidly","swiftly","all cool-like","kinda"]
 
+@export var sprite : Node2D
 
 var has_focus : bool = false
+@export var highlight : bool = false:
+	set(n_highlight):
+		highlight = n_highlight
+		print(self)
+		print(sprite)
+		print(highlight)
+		if sprite:
+			sprite.material.set_shader_parameter("highlight", highlight)
 #represents the roll that will be used in the next
 #step of the game
 var next_roll : int = -1:

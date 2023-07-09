@@ -23,7 +23,7 @@ func game_over(message : String,seduced : bool)->void:
 #for the next stage of the game
 func update_scene()->void:
 	turn_indicator.visible = false
-	handContainer.clean()	
+	handContainer.clean()
 	entity_container.set_intents()
 	scene_text = entity_container.get_state_text()
 	talkBox.clear_text()
@@ -110,3 +110,21 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("developer_debug") and turn_indicator.visible:
 		update_scene()
+
+
+func _on_rotary_deck_card_deselected(card):
+	print("hceking card thingy")
+	print(handContainer.selected_card)
+	if handContainer.selected_card:
+		entity_container.highlight_entities(true)
+	else:
+		entity_container.highlight_entities(false)
+	pass # Replace with function body.
+
+
+func _on_rotary_deck_card_selected(card):
+	if handContainer.selected_card:
+		entity_container.highlight_entities(true)
+	else:
+		entity_container.highlight_entities(false)
+	pass # Replace with function body.

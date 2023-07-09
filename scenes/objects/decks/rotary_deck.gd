@@ -64,18 +64,25 @@ func clean()->void:
 
 @export var focused_card_position : Node2D
 
+signal card_selected(card)
+signal card_deselected(card)
 #represents the card that is currently selected
 var selected_card : Card : 
 	set (val):
 		if val and val == selected_card:
 			val.reset_position()
-			selected_card = null 
+			selected_card = null
+			emit_signal("card_deselected",val)
 		else:
 			if selected_card:
 				selected_card.reset_position()
-			selected_card = val 
+				emit_signal("card_deselected", selected_card)
+			selected_card = val
 			if selected_card:
 				selected_card.tween_to(focused_card_position.global_position,10/60.0,"global_position")
+				emit_signal("card_selected", selected_card)
+		if val == null:
+			emit_signal("card_deselected", selected_card)
 	get:
 		return selected_card
 

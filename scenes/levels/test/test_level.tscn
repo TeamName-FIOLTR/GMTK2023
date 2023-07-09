@@ -124,7 +124,6 @@ position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
 [node name="Card32" parent="draw" instance=ExtResource("13_rl35p")]
-scale = Vector2(1, 1)
 suggestion_intent = 3
 increase_amount = 100
 number = 1
@@ -256,3 +255,6 @@ draw_amount = 1
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(1087, 561)
+
+[connection signal="card_deselected" from="Rotary Deck" to="." method="_on_rotary_deck_card_deselected"]
+[connection signal="card_selected" from="Rotary Deck" to="." method="_on_rotary_deck_card_selected"]
