@@ -182,9 +182,10 @@ func _ready():
 		send_to_draw(c)
 		c.flip_down()
 
+	draw_deck.cards.shuffle()
 
 	#draw a starting hand of 4 cards
-	draw_card(4)
+	draw_card(6)
 	
 	update_cards_on_rotary()
 

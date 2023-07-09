@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=16 format=3 uid="uid://chqs0rqvw37gt"]
 
 [ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_3o3lx"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
@@ -10,8 +10,11 @@
 [ext_resource type="Script" path="res://scenes/levels/test/Description Box.gd" id="4_miqya"]
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
+[ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="11_3y0mu"]
 [ext_resource type="PackedScene" uid="uid://diw6f6j8drtyc" path="res://scenes/objects/cards/grow_card/grow_card.tscn" id="12_d4bc0"]
+[ext_resource type="PackedScene" uid="uid://d4mjm355wj2bk" path="res://scenes/objects/cards/reset_library/reset_library_card.tscn" id="12_ifhjt"]
 [ext_resource type="AudioStream" uid="uid://ddegupaqamwpu" path="res://assets/music/fruit cookie.wav" id="13_d1rrn"]
+[ext_resource type="PackedScene" uid="uid://hvh0a8idehdg" path="res://scenes/objects/cards/sugest_card/sug_card.tscn" id="14_17b2y"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer", "turn_indicator")]
 layout_mode = 3
@@ -125,72 +128,89 @@ position = Vector2(538, 141)
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
 
-[node name="Card" parent="draw" instance=ExtResource("12_d4bc0")]
+[node name="Card19" parent="draw" instance=ExtResource("14_17b2y")]
+scale = Vector2(1, 1)
+suggestion_intent = 3
+increase_amount = 10
+number = 5
+draw_amount = -1
+
+[node name="Card" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 10
+draw_amount = -1
+
+[node name="Card4" parent="draw" instance=ExtResource("11_3y0mu")]
 number = 10
 draw_amount = 2
+intent_target = 2
 
-[node name="Card2" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
+[node name="Card2" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 8
+draw_amount = 0
+
+[node name="Card3" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 7
 draw_amount = 2
 
-[node name="Card3" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
+[node name="Card5" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 7
 draw_amount = 2
 
-[node name="Card4" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
+[node name="Card6" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 13
+draw_amount = -1
+intent_target = 0
+
+[node name="Card7" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 1
+draw_amount = 3
+intent_target = 1
+
+[node name="Card8" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 15
+draw_amount = -2
+
+[node name="Card9" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 14
+draw_amount = -1
+
+[node name="Card10" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 7
+draw_amount = 2
+intent_target = 1
+
+[node name="Card11" parent="draw" instance=ExtResource("11_3y0mu")]
+number = 1
 draw_amount = 2
 
-[node name="Card5" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
+[node name="Card12" parent="draw" instance=ExtResource("12_ifhjt")]
+number = 1
 draw_amount = 2
 
-[node name="Card6" parent="draw" instance=ExtResource("12_d4bc0")]
+[node name="Card15" parent="draw" instance=ExtResource("12_ifhjt")]
 number = 10
-draw_amount = 2
+draw_amount = -1
+intent_target = 2
 
-[node name="Card7" parent="draw" instance=ExtResource("12_d4bc0")]
+[node name="Card13" parent="draw" instance=ExtResource("12_ifhjt")]
 number = 10
-draw_amount = 2
+draw_amount = -1
+intent_target = 2
 
-[node name="Card8" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card9" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card10" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card11" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card12" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card13" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card14" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
-
-[node name="Card15" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
+[node name="Card14" parent="draw" instance=ExtResource("12_ifhjt")]
+number = 1
 draw_amount = 2
 
 [node name="Card16" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
-draw_amount = 2
+number = 18
+draw_amount = -3
 
 [node name="Card17" parent="draw" instance=ExtResource("12_d4bc0")]
-number = 10
+number = 18
+draw_amount = -3
+
+[node name="Card18" parent="draw" instance=ExtResource("12_d4bc0")]
+number = 1
 draw_amount = 2
 
 [node name="discard" parent="." instance=ExtResource("9_snrgk")]
