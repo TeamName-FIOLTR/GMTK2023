@@ -4,6 +4,8 @@ extends Control
 @export var talkBox : TalkBox 
 @export var handContainer : RotaryDeck
 
+@export var turn_indicator : Label
+
 var scene_text : String = ""
 
 #keeps track of how many entities that we
@@ -14,6 +16,7 @@ var entities_with_rolls : int = 0
 #runs all the code necessary for updating the scene
 #for the next stage of the game
 func update_scene()->void:
+	turn_indicator.visible = false
 	handContainer.clean()	
 	entity_container.set_intents()
 	scene_text = entity_container.get_state_text()
@@ -52,6 +55,7 @@ func apply_damage()->void:
 func evaluate_entities():
 	check_rolls()
 	apply_damage()
+	turn_indicator.visible = true
 
 func on_entity_selected(entity):
 	if entity.next_roll == -1 and handContainer.selected_card:
@@ -86,5 +90,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("developer_debug"):
+	if Input.is_action_just_pressed("developer_debug") and turn_indicator.visible:
 		update_scene()

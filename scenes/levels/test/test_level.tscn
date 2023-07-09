@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://chqs0rqvw37gt"]
+[gd_scene load_steps=13 format=3 uid="uid://chqs0rqvw37gt"]
 
+[ext_resource type="Theme" uid="uid://botlkbamgp28p" path="res://scenes/objects/UI/mainTheme.tres" id="1_3o3lx"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nrai7"]
 [ext_resource type="Script" path="res://scenes/levels/test/test_level.gd" id="1_opsnk"]
 [ext_resource type="PackedScene" uid="uid://c51cc5g63vh0p" path="res://scenes/objects/entities/entity.tscn" id="2_4uyk5"]
@@ -10,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://c3gy6dr0n08dl" path="res://scenes/objects/decks/rotary_deck.tscn" id="8_j7ybf"]
 [ext_resource type="PackedScene" uid="uid://box8x85l0ie8s" path="res://scenes/objects/CardPile/card_pile.tscn" id="9_snrgk"]
 [ext_resource type="PackedScene" uid="uid://bf3wvnl7ea8j5" path="res://scenes/objects/cards/card.tscn" id="10_mdbpk"]
+[ext_resource type="PackedScene" uid="uid://d4mjm355wj2bk" path="res://scenes/objects/cards/reset_library/reset_library_card.tscn" id="11_comdw"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer")]
+[node name="Control" type="Control" node_paths=PackedStringArray("entity_container", "talkBox", "handContainer", "turn_indicator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,10 +23,12 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_3o3lx")
 script = ExtResource("1_nrai7")
 entity_container = NodePath("Combat Zone/EntityContainer")
 talkBox = NodePath("Description Box/padding/talkBox")
 handContainer = NodePath("Rotary Deck")
+turn_indicator = NodePath("Combat Zone/TurnHelperText")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -66,6 +70,22 @@ position = Vector2(924, 217)
 scale = Vector2(7.8, 7.8)
 requires_input = false
 
+[node name="TurnHelperText" type="Label" parent="Combat Zone"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.563
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Press Space To Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="test level" type="Node2D" parent="."]
 position = Vector2(0, -2)
 script = ExtResource("1_opsnk")
@@ -100,6 +120,11 @@ position = Vector2(538, 141)
 [node name="draw" parent="." instance=ExtResource("9_snrgk")]
 position = Vector2(53, 569)
 scale = Vector2(0.2, 0.2)
+
+[node name="Card7" parent="draw" instance=ExtResource("11_comdw")]
+scale = Vector2(1, 1)
+number = 1
+draw_amount = 0
 
 [node name="Card" parent="draw" instance=ExtResource("10_mdbpk")]
 number = 10
